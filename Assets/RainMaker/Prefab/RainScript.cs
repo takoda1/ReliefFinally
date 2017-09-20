@@ -3,8 +3,14 @@ using System.Collections;
 
 namespace DigitalRuby.RainMaker
 {
+
     public class RainScript : BaseRainScript
     {
+
+		public static bool isSnowFalling = false;
+
+
+
         [Tooltip("The height above the camera that the rain will start falling from")]
         public float RainHeight = 25.0f;
 		public bool isFollowing = false;
@@ -60,11 +66,17 @@ namespace DigitalRuby.RainMaker
 
         protected override void Update()
         {
-            base.Update();
-			if (!isFollowing) {
-				UpdateRain ();
-				isFollowing = true;
-			} 
+			if (RainScript.isSnowFalling) {
+				GameObject.Find ("SnowyTerrainSnowFall").SetActive (true);
+				base.Update ();
+				if (!isFollowing) {
+					UpdateRain ();
+					//isFollowing = true;
+				} 
+			} else {
+
+				GameObject.Find ("SnowyTerrainSnowFall").SetActive (false);
+			}
         }
     }
 }
