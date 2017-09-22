@@ -141,7 +141,7 @@ public class TerrainAccessor : MonoBehaviour {
 	void attemptTravel(string accessor) {
 		switch (accessor) {
 		case "snowyTerrainAccessor":
-			if (GlobalConstants.ReliefStats.Instance.HAS_ACCESS_TO_SNOWY_TERRAIN) {
+			if (ReliefStats.instance.HAS_ACCESS_TO_SNOWY_TERRAIN) {
 				if (!snowySceneLoaded) {
 					SceneManager.LoadScene ("SnowyMountainScene", LoadSceneMode.Single);
 					snowySceneLoaded = true;
@@ -153,19 +153,19 @@ public class TerrainAccessor : MonoBehaviour {
 				resetAtmosphere ();
 				fpc.transform.position = new Vector3 (1455.0f, 161.0f, 11.5f);
 			} else {
-				int delta = GlobalConstants.ReliefStats.Instance.SNOWY_TERRAIN_MAX_COLLECT - GlobalConstants.ReliefStats.Instance.currentSnowyTerrainProgress;
-				accessUpdate.text = System.String.Format (GlobalConstants.ReliefStats.Instance.NO_ACCESS_SNOWY_TERRAIN, delta);
+				int delta = ReliefStats.instance.SNOWY_TERRAIN_MAX_COLLECT - ReliefStats.instance.currentSnowyTerrainProgress;
+				accessUpdate.text = System.String.Format (ReliefStats.instance.NO_ACCESS_SNOWY_TERRAIN, delta);
 			}
 			break;
 		case "underwaterTerrainAccessor":
-			if (GlobalConstants.ReliefStats.Instance.HAS_ACCESS_TO_UNDERWATER_TERRAIN) {
+			if (ReliefStats.instance.HAS_ACCESS_TO_UNDERWATER_TERRAIN) {
 				currentEnvironment = "underwater";
 				SceneManager.LoadScene ("UnderwaterScene", LoadSceneMode.Single);
 				DigitalRuby.RainMaker.RainScript.isSnowFalling = false;
 				fpc.transform.position = new Vector3 (1505.9f, 488.6f, 1197.0f);
 			} else {
-				int delta = GlobalConstants.ReliefStats.Instance.UNDERWATER_TERRAIN_MAX_COLLECT - GlobalConstants.ReliefStats.Instance.currentUnderwaterTerrainProgress;
-				accessUpdate.text = System.String.Format (GlobalConstants.ReliefStats.Instance.NO_ACCESS_UNDERWATER_TERRAIN, delta);
+				int delta = ReliefStats.instance.UNDERWATER_TERRAIN_MAX_COLLECT - ReliefStats.instance.currentUnderwaterTerrainProgress;
+				accessUpdate.text = System.String.Format (ReliefStats.instance.NO_ACCESS_UNDERWATER_TERRAIN, delta);
 			}
 			break;
 		

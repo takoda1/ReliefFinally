@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Timers;
-using GlobalConstants;
 
 public class PickupShape : MonoBehaviour {
 	
@@ -38,39 +37,39 @@ public class PickupShape : MonoBehaviour {
 	}
 		
 	void updateProgressWinterCoat(int id){
-		if (id <= GlobalConstants.ReliefStats.Instance.SNOWY_TERRAIN_MAX_COLLECT) {
-			if(GlobalConstants.ReliefStats.Instance.snowyTerrainPiecesFound [id-1] == false) {
-				GlobalConstants.ReliefStats.Instance.currentSnowyTerrainProgress++;
-				GlobalConstants.ReliefStats.Instance.snowyTerrainPiecesFound [id-1] = true;
+		if (id <= ReliefStats.instance.SNOWY_TERRAIN_MAX_COLLECT) {
+			if(ReliefStats.instance.snowyTerrainPiecesFound[id - 1] == false) {
+                ReliefStats.instance.currentSnowyTerrainProgress++;
+                ReliefStats.instance.snowyTerrainPiecesFound[id - 1] = true;
 			}
 		}
 			
-		if (GlobalConstants.ReliefStats.Instance.currentSnowyTerrainProgress < GlobalConstants.ReliefStats.Instance.SNOWY_TERRAIN_MAX_COLLECT) {
-			piecePickupProgress.text = System.String.Format(GlobalConstants.ReliefStats.Instance.SNOWY_TERRAIN_PIECE_RETRIEVED, GlobalConstants.ReliefStats.Instance.currentSnowyTerrainProgress);
+		if (ReliefStats.instance.currentSnowyTerrainProgress < ReliefStats.instance.SNOWY_TERRAIN_MAX_COLLECT) {
+			piecePickupProgress.text = System.String.Format(ReliefStats.instance.SNOWY_TERRAIN_PIECE_RETRIEVED, ReliefStats.instance.currentSnowyTerrainProgress);
 			StartCoroutine(eraseCurrentStatus());
 		} else {
-			piecePickupProgress.text = GlobalConstants.ReliefStats.Instance.SNOWY_TERRAIN_ALL_PIECES_RETRIEVED;
-			GlobalConstants.ReliefStats.Instance.HAS_ACCESS_TO_SNOWY_TERRAIN = true;
+			piecePickupProgress.text = ReliefStats.instance.SNOWY_TERRAIN_ALL_PIECES_RETRIEVED;
+			ReliefStats.instance.HAS_ACCESS_TO_SNOWY_TERRAIN = true;
 		}
 	}
 
 
 	void updateProgressScubaGear(int id) {
-		if (id <= GlobalConstants.ReliefStats.Instance.UNDERWATER_TERRAIN_MAX_COLLECT) {
-			if(GlobalConstants.ReliefStats.Instance.underwaterTerrainPiecesFound [id-1] == false){
-				GlobalConstants.ReliefStats.Instance.currentUnderwaterTerrainProgress++;
-				GlobalConstants.ReliefStats.Instance.underwaterTerrainPiecesFound [id-1] = true;
+		if (id <= ReliefStats.instance.UNDERWATER_TERRAIN_MAX_COLLECT) {
+			if(ReliefStats.instance.underwaterTerrainPiecesFound [id-1] == false){
+				ReliefStats.instance.currentUnderwaterTerrainProgress++;
+				ReliefStats.instance.underwaterTerrainPiecesFound [id-1] = true;
 			}
 
 		}
 
 
-		if (GlobalConstants.ReliefStats.Instance.currentUnderwaterTerrainProgress < GlobalConstants.ReliefStats.Instance.UNDERWATER_TERRAIN_MAX_COLLECT) {
-			piecePickupProgress.text = System.String.Format(GlobalConstants.ReliefStats.Instance.UNDERWATER_TERRAIN_PIECE_RETRIEVED, GlobalConstants.ReliefStats.Instance.currentUnderwaterTerrainProgress) ;
+		if (ReliefStats.instance.currentUnderwaterTerrainProgress < ReliefStats.instance.UNDERWATER_TERRAIN_MAX_COLLECT) {
+			piecePickupProgress.text = System.String.Format(ReliefStats.instance.UNDERWATER_TERRAIN_PIECE_RETRIEVED, ReliefStats.instance.currentUnderwaterTerrainProgress) ;
 			StartCoroutine(eraseCurrentStatus());
 		} else {
-			piecePickupProgress.text = GlobalConstants.ReliefStats.Instance.UNDERWATER_TERRAIN_ALL_PIECES_RETRIEVED;
-			GlobalConstants.ReliefStats.Instance.HAS_ACCESS_TO_UNDERWATER_TERRAIN = true;
+			piecePickupProgress.text = ReliefStats.instance.UNDERWATER_TERRAIN_ALL_PIECES_RETRIEVED;
+			ReliefStats.instance.HAS_ACCESS_TO_UNDERWATER_TERRAIN = true;
 		}
 	}
 

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace UnityStandardAssets.Effects
@@ -9,7 +10,7 @@ namespace UnityStandardAssets.Effects
         public float force = 1;
 
 
-        private ParticleCollisionEvent[] m_CollisionEvents = new ParticleCollisionEvent[16];
+        private List<ParticleCollisionEvent> m_CollisionEvents = new List<ParticleCollisionEvent>(16);
         private ParticleSystem m_ParticleSystem;
 
 
@@ -23,10 +24,10 @@ namespace UnityStandardAssets.Effects
         {
             int safeLength = m_ParticleSystem.GetSafeCollisionEventSize();
 
-            if (m_CollisionEvents.Length < safeLength)
+            /*if (m_CollisionEvents.Length < safeLength)
             {
                 m_CollisionEvents = new ParticleCollisionEvent[safeLength];
-            }
+            }*/
 
             int numCollisionEvents = m_ParticleSystem.GetCollisionEvents(other, m_CollisionEvents);
             int i = 0;
@@ -40,10 +41,10 @@ namespace UnityStandardAssets.Effects
 
                 var col = m_CollisionEvents[i].colliderComponent;
 
-                if (col.attachedRigidbody != null)
+                if (col.GetComponent<Rigidbody>() != null)
                 {
                     Vector3 vel = m_CollisionEvents[i].velocity;
-                    col.attachedRigidbody.AddForce(vel*force, ForceMode.Impulse);
+                    col.GetComponent<Rigidbody>().AddForce(vel*force, ForceMode.Impulse);
                 }
 
                 other.BroadcastMessage("Extinguish", SendMessageOptions.DontRequireReceiver);
