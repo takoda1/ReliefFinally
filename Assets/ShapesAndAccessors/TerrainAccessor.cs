@@ -26,7 +26,19 @@ public class TerrainAccessor : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		accessUpdate.text = "";
-		currentEnvironment = "plains";
+        string environment = SceneManager.GetActiveScene().name;
+        switch (environment)
+        {
+            case "DefaultPlaneScene":
+                currentEnvironment = "grassy";
+                break;
+            case "SnowyMountainScene":
+                currentEnvironment = "snowy";
+                break;
+            case "UnderwaterScene":
+                currentEnvironment = "underwater";
+                break;
+        }
 		isUnderwater = false;
 		normalAtmosphereColor = new Color (0.5f, 0.5f, 0.5f, 0.5f);
 		underwaterAtmosphereColor = new Color(0.4f, 0.6f, 1.0f, 0.8f);
@@ -46,20 +58,22 @@ public class TerrainAccessor : MonoBehaviour {
 
 	void Update() {
 
-		//If the player is in the underwater environment and happens to fall below the water line, the atmosphere
-		//will change to mimic an underwater experience.
-		if (!isUnderwater && currentEnvironment.Equals ("underwater")) {
-			if (waterLine != null && transform.position.y < waterLine.transform.position.y) {
-				setUnderwaterAtmosphere ();
-				isUnderwater = true;
-			}
-		} else if(isUnderwater && currentEnvironment.Equals ("underwater")) {
-			if (waterLine != null && transform.position.y > waterLine.transform.position.y) {
-				resetAtmosphere ();
-				isUnderwater = false;
-			}
-		}
-	}
+        //If the player is in the underwater environment and happens to fall below the water line, the atmosphere
+        //will change to mimic an underwater experience.
+        if (currentEnvironment.Equals("underwater")){
+		    if (!isUnderwater) {
+			    if (waterLine != null && transform.position.y < waterLine.transform.position.y) {
+				    setUnderwaterAtmosphere ();
+				    isUnderwater = true;
+			    }
+		    } else if(isUnderwater) {
+			    if (waterLine != null && transform.position.y > waterLine.transform.position.y) {
+				    resetAtmosphere ();
+				    isUnderwater = false;
+			    }
+		    }
+        }
+    }
 
 	void setUnderwaterAtmosphere() {
 		RenderSettings.fogColor = underwaterAtmosphereColor;
@@ -172,9 +186,10 @@ public class TerrainAccessor : MonoBehaviour {
 		case "grassyTerrainAccessor":
 			currentEnvironment = "grassy";
 			DigitalRuby.RainMaker.RainScript.isSnowFalling = false;
-			isUnderwater = false;
+                isUnderwater = false;
 			resetAtmosphere ();
-			fpc.transform.position = new Vector3 (0.0f, 3.0f, 0.0f);
+                SceneManager.LoadScene("DefaultPlaneScene", LoadSceneMode.Single);
+                fpc.transform.position = new Vector3 (0.0f, 3.0f, 0.0f);
 			break;
 		}
 	}
