@@ -185,10 +185,10 @@ public class TerrainAccessor : MonoBehaviour {
 		
 		case "grassyTerrainAccessor":
 			currentEnvironment = "grassy";
-			DigitalRuby.RainMaker.RainScript.isSnowFalling = false;
+                SceneManager.LoadScene("DefaultPlaneScene", LoadSceneMode.Single);
+                DigitalRuby.RainMaker.RainScript.isSnowFalling = false;
                 isUnderwater = false;
 			resetAtmosphere ();
-                SceneManager.LoadScene("DefaultPlaneScene", LoadSceneMode.Single);
                 fpc.transform.position = new Vector3 (0.0f, 3.0f, 0.0f);
 			break;
 		}
