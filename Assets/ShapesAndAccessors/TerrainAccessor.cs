@@ -22,9 +22,10 @@ public class TerrainAccessor : MonoBehaviour {
 	private GameObject waterLine;
 	private string[] particleSystems = new string[0];
 	private bool snowySceneLoaded = false;
+    
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		accessUpdate.text = "";
         string environment = SceneManager.GetActiveScene().name;
         switch (environment)
@@ -169,6 +170,7 @@ public class TerrainAccessor : MonoBehaviour {
 			} else {
 				int delta = ReliefStats.instance.SNOWY_TERRAIN_MAX_COLLECT - ReliefStats.instance.currentSnowyTerrainProgress;
 				accessUpdate.text = System.String.Format (ReliefStats.instance.NO_ACCESS_SNOWY_TERRAIN, delta);
+                StartCoroutine(eraseCurrentStatus());
 			}
 			break;
 		case "underwaterTerrainAccessor":
@@ -177,10 +179,12 @@ public class TerrainAccessor : MonoBehaviour {
 				SceneManager.LoadScene ("UnderwaterScene", LoadSceneMode.Single);
 				DigitalRuby.RainMaker.RainScript.isSnowFalling = false;
 				fpc.transform.position = new Vector3 (1505.9f, 488.6f, 1197.0f);
-			} else {
+			}
+            else {
 				int delta = ReliefStats.instance.UNDERWATER_TERRAIN_MAX_COLLECT - ReliefStats.instance.currentUnderwaterTerrainProgress;
 				accessUpdate.text = System.String.Format (ReliefStats.instance.NO_ACCESS_UNDERWATER_TERRAIN, delta);
-			}
+                StartCoroutine(eraseCurrentStatus());
+                }
 			break;
 		
 		case "grassyTerrainAccessor":
@@ -193,5 +197,12 @@ public class TerrainAccessor : MonoBehaviour {
 			break;
 		}
 	}
-		
+
+    IEnumerator eraseCurrentStatus()
+    {
+        yield return new WaitForSeconds(2);
+        accessUpdate.text = "";
+    }
+
+
 }

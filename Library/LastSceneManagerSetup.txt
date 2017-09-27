@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/DefaultPlaneScene.unity
+- path: Assets/SnowyMountainScene.unity
   isLoaded: 1
   isActive: 1

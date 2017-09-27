@@ -7,11 +7,9 @@ using System.Timers;
 public class PickupShape : MonoBehaviour {
 	
 	public Text piecePickupProgress;
-	private System.Timers.Timer aTimer;
 
 	void Start () {
 		piecePickupProgress.text = "";
-		aTimer = new System.Timers.Timer(2000);
 	}
 
 	void showPiecePickupProgress(string pieceType, GameObject piece) {
@@ -32,7 +30,6 @@ public class PickupShape : MonoBehaviour {
 		
 	IEnumerator eraseCurrentStatus() {
 		yield return new WaitForSeconds (2);
-		aTimer.Enabled = false;
 		piecePickupProgress.text = "";
 	}
 		
@@ -46,12 +43,12 @@ public class PickupShape : MonoBehaviour {
 			
 		if (ReliefStats.instance.currentSnowyTerrainProgress < ReliefStats.instance.SNOWY_TERRAIN_MAX_COLLECT) {
 			piecePickupProgress.text = System.String.Format(ReliefStats.instance.SNOWY_TERRAIN_PIECE_RETRIEVED, ReliefStats.instance.currentSnowyTerrainProgress);
-			StartCoroutine(eraseCurrentStatus());
 		} else {
 			piecePickupProgress.text = ReliefStats.instance.SNOWY_TERRAIN_ALL_PIECES_RETRIEVED;
 			ReliefStats.instance.HAS_ACCESS_TO_SNOWY_TERRAIN = true;
 		}
-	}
+        StartCoroutine(eraseCurrentStatus());
+    }
 
 
 	void updateProgressScubaGear(int id) {
@@ -66,11 +63,12 @@ public class PickupShape : MonoBehaviour {
 
 		if (ReliefStats.instance.currentUnderwaterTerrainProgress < ReliefStats.instance.UNDERWATER_TERRAIN_MAX_COLLECT) {
 			piecePickupProgress.text = System.String.Format(ReliefStats.instance.UNDERWATER_TERRAIN_PIECE_RETRIEVED, ReliefStats.instance.currentUnderwaterTerrainProgress) ;
-			StartCoroutine(eraseCurrentStatus());
+			
 		} else {
 			piecePickupProgress.text = ReliefStats.instance.UNDERWATER_TERRAIN_ALL_PIECES_RETRIEVED;
 			ReliefStats.instance.HAS_ACCESS_TO_UNDERWATER_TERRAIN = true;
 		}
+        StartCoroutine(eraseCurrentStatus());
 	}
 
 	//Precondition: works for names of format: type#id

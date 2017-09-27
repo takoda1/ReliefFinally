@@ -43,11 +43,11 @@ public class ReliefStats : MonoBehaviour {
         else if (instance != this)
             Destroy(gameObject);
         VRSettings.enabled = true;
-        SNOWY_TERRAIN_MAX_COLLECT = 0;// snowyPieces;
+        SNOWY_TERRAIN_MAX_COLLECT = 0;
 
-        UNDERWATER_TERRAIN_MAX_COLLECT = 0;//underwaterPieces;
+        UNDERWATER_TERRAIN_MAX_COLLECT = underwaterPieces;
         HAS_ACCESS_TO_SNOWY_TERRAIN = true;
-        HAS_ACCESS_TO_UNDERWATER_TERRAIN = true;
+        HAS_ACCESS_TO_UNDERWATER_TERRAIN = false;
         currentSnowyTerrainProgress = 0;
         currentUnderwaterTerrainProgress = 0;
         snowyTerrainPiecesFound = new bool[snowyPieces];
