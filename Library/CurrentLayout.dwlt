@@ -20,7 +20,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 2}
-  m_MinSize: {x: 950, y: 542}
+  m_MinSize: {x: 950, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -43,7 +43,7 @@ MonoBehaviour:
     y: 0
     width: 1920
     height: 997
-  m_MinSize: {x: 950, y: 542}
+  m_MinSize: {x: 950, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &3
 MonoBehaviour:
@@ -110,7 +110,7 @@ MonoBehaviour:
   m_MinSize: {x: 713, y: 492}
   m_MaxSize: {x: 18008, y: 14042}
   vertical: 0
-  controlID: 10
+  controlID: 47
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -387,28 +387,28 @@ MonoBehaviour:
     height: 926
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 72320700
-    m_LastClickedID: 471666
-    m_ExpandedIDs: 7cb8f3ff3622f4ffce50f4ff048bf4ffd8adf5ff74a1f6fffc17f7ffb0b9f7ffe866f8ff82bff8ff383cf9ff6877faffe0dbfaff9222fbffd6b6fdff423cfeff1afcffff00000000e2340000d435000056360000e44c0100184d0100224d0100444d0100e05001002e7b04005cbe040088be040098be0400b6be04005a2505008e250500ce260500e82705003429050096290500d2290500002c0500962e0500a4c5050048070600a0070600e007060014080600982a0600cc2a0600e82c0600262d0600aa2d0600704306008ac4060046320700
+    m_SelectedIDs: 7c740000
+    m_LastClickedID: 29820
+    m_ExpandedIDs: b012feff7ac3feff20dafeff000000001a6b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: BarnacleWatersFromFrigidCliffsAccessor
-      m_OriginalName: BarnacleWatersFromFrigidCliffsAccessor
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 410524
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 0
       m_ClientGUIView: {fileID: 6}
     m_SearchString: 
   m_ExpandedScenes:
-  - SnowyMountainScene
+  - UnderwaterScene
   m_CurrenRootInstanceID: 0
   m_Locked: 0
   m_CurrentSortingName: TransformSorting
@@ -439,14 +439,14 @@ MonoBehaviour:
     width: 789
     height: 532
   m_SceneLighting: 1
-  lastFramingTime: 6715.665377800768
+  lastFramingTime: 291.62721438364144
   m_2DMode: 0
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 1064.286, y: 128.16196, z: 292.65137}
+    m_Target: {x: -3.4331665, y: 399.75507, z: 57.035446}
     speed: 2
-    m_Value: {x: 1064.286, y: 128.16196, z: 292.65137}
+    m_Value: {x: -3.4331665, y: 399.75507, z: 57.035446}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -469,13 +469,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: -0.14963321, y: 0.84085304, z: -0.43011984, w: -0.29252854}
+    m_Target: {x: -0.24219552, y: -0.21187462, z: 0.05428425, w: -0.94525325}
     speed: 2
-    m_Value: {x: -0.14963321, y: 0.84085304, z: -0.43011984, w: -0.29252854}
+    m_Value: {x: -0.24219552, y: -0.21187462, z: 0.05428425, w: -0.94525325}
   m_Size:
-    m_Target: 20.77786
+    m_Target: 151.74738
     speed: 2
-    m_Value: 20.77786
+    m_Value: 151.74738
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -534,9 +534,9 @@ MonoBehaviour:
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 159}
-    m_SelectedIDs: d4270000
-    m_LastClickedID: 10196
-    m_ExpandedIDs: 00000000782700004e2800007428000078290000602b0000ca2c00002a2d0000be3000002e31000040320000863200001833000000ca9a3bffffff7f
+    m_SelectedIDs: da530000
+    m_LastClickedID: 21466
+    m_ExpandedIDs: 00000000b853000006540000185400007654000016550000c0550000de550000c2560000f8560000565700006a5700008657000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -564,7 +564,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000782700004e28000078290000602b0000ca2c00002a2d0000be3000002e310000403200008632000018330000
+    m_ExpandedIDs: 00000000b853000006540000185400007654000016550000c0550000de550000c2560000f8560000565700006a57000086570000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -591,7 +591,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: 38280000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -645,7 +645,7 @@ MonoBehaviour:
     y: 92
     width: 721
     height: 926
-  m_ScrollPosition: {x: 0, y: 30.955078}
+  m_ScrollPosition: {x: 0, y: 0}
   m_InspectorMode: 0
   m_PreviewResizer:
     m_CachedPref: 310
