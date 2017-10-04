@@ -20,7 +20,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 2}
-  m_MinSize: {x: 950, y: 300}
+  m_MinSize: {x: 950, y: 542}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -43,7 +43,7 @@ MonoBehaviour:
     y: 0
     width: 1920
     height: 997
-  m_MinSize: {x: 950, y: 300}
+  m_MinSize: {x: 950, y: 542}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &3
 MonoBehaviour:
@@ -110,7 +110,7 @@ MonoBehaviour:
   m_MinSize: {x: 713, y: 492}
   m_MaxSize: {x: 18008, y: 14042}
   vertical: 0
-  controlID: 47
+  controlID: 10
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -177,7 +177,7 @@ MonoBehaviour:
     x: 0
     y: 0
     width: 793
-    height: 553
+    height: 589
   m_MinSize: {x: 204, y: 221}
   m_MaxSize: {x: 4004, y: 4021}
   m_ActualView: {fileID: 14}
@@ -202,9 +202,9 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 553
+    y: 589
     width: 793
-    height: 394
+    height: 358
   m_MinSize: {x: 234, y: 271}
   m_MaxSize: {x: 10004, y: 10021}
   m_ActualView: {fileID: 15}
@@ -308,7 +308,7 @@ MonoBehaviour:
     x: 406
     y: 92
     width: 789
-    height: 532
+    height: 568
   m_MaximizeOnPlay: 0
   m_Gizmos: 0
   m_Stats: 0
@@ -319,8 +319,8 @@ MonoBehaviour:
     m_VRangeLocked: 0
     m_HBaseRangeMin: -394.5
     m_HBaseRangeMax: 394.5
-    m_VBaseRangeMin: -257.5
-    m_VBaseRangeMax: 257.5
+    m_VBaseRangeMin: -275.5
+    m_VBaseRangeMax: 275.5
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -338,9 +338,9 @@ MonoBehaviour:
       x: 0
       y: 17
       width: 789
-      height: 515
+      height: 551
     m_Scale: {x: 1, y: 1}
-    m_Translation: {x: 394.5, y: 257.5}
+    m_Translation: {x: 394.5, y: 275.5}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
@@ -348,14 +348,14 @@ MonoBehaviour:
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
       x: -394.5
-      y: -257.5
+      y: -275.5
       width: 789
-      height: 515
+      height: 551
     m_MinimalGUI: 1
   m_defaultScale: 1
   m_TargetTexture: {fileID: 0}
   m_CurrentColorSpace: 0
-  m_LastWindowPixelSize: {x: 789, y: 532}
+  m_LastWindowPixelSize: {x: 789, y: 568}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000100000100
@@ -387,9 +387,9 @@ MonoBehaviour:
     height: 926
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 7c740000
-    m_LastClickedID: 29820
-    m_ExpandedIDs: b012feff7ac3feff20dafeff000000001a6b0000
+    m_SelectedIDs: 90590000
+    m_LastClickedID: 22928
+    m_ExpandedIDs: 30c7fdff32c7fdff3eebfdffce16feffd675ffffb69effff1afcffff00000000b4350000423f00000c5a0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -408,7 +408,7 @@ MonoBehaviour:
       m_ClientGUIView: {fileID: 6}
     m_SearchString: 
   m_ExpandedScenes:
-  - UnderwaterScene
+  - DefaultPlaneScene
   m_CurrenRootInstanceID: 0
   m_Locked: 0
   m_CurrentSortingName: TransformSorting
@@ -437,16 +437,16 @@ MonoBehaviour:
     x: 406
     y: 92
     width: 789
-    height: 532
+    height: 568
   m_SceneLighting: 1
-  lastFramingTime: 291.62721438364144
+  lastFramingTime: 1375.3823947613719
   m_2DMode: 0
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -3.4331665, y: 399.75507, z: 57.035446}
+    m_Target: {x: 707.7432, y: 146.17328, z: 378.05627}
     speed: 2
-    m_Value: {x: -3.4331665, y: 399.75507, z: 57.035446}
+    m_Value: {x: 707.7432, y: 146.17328, z: 378.05627}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -469,13 +469,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: -0.24219552, y: -0.21187462, z: 0.05428425, w: -0.94525325}
+    m_Target: {x: 0.5610879, y: -0.016885752, z: 0.011453943, w: 0.82750463}
     speed: 2
-    m_Value: {x: -0.24219552, y: -0.21187462, z: 0.05428425, w: -0.94525325}
+    m_Value: {x: 0.56108797, y: -0.016885754, z: 0.011453944, w: 0.8275047}
   m_Size:
-    m_Target: 151.74738
+    m_Target: 587.4348
     speed: 2
-    m_Value: 151.74738
+    m_Value: 587.4348
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -509,9 +509,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 406
-    y: 645
+    y: 681
     width: 789
-    height: 373
+    height: 337
   m_SearchFilter:
     m_NameFilter: 
     m_ClassNames: []
@@ -524,19 +524,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/For_sale/snow_mountain
+    - Assets/Standard Assets/Environment/Water/Water/Materials
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/For_sale/snow_mountain
+  - Assets/Standard Assets/Environment/Water/Water/Materials
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\takoda\Documents\ReliefFinally
   m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 159}
-    m_SelectedIDs: da530000
-    m_LastClickedID: 21466
-    m_ExpandedIDs: 00000000b853000006540000185400007654000016550000c0550000de550000c2560000f8560000565700006a5700008657000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 540}
+    m_SelectedIDs: 7c270000
+    m_LastClickedID: 10108
+    m_ExpandedIDs: 00000000782700004e2800007428000078290000602b0000ca2c00002a2d0000be3000002e31000040320000863200001833000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -564,7 +564,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000b853000006540000185400007654000016550000c0550000de550000c2560000f8560000565700006a57000086570000
+    m_ExpandedIDs: 00000000782700004e2800007428000078290000602b0000ca2c00002a2d0000be3000002e310000403200008632000018330000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -591,7 +591,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: 38280000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
