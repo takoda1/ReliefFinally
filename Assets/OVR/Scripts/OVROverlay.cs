@@ -380,9 +380,9 @@ public class OVROverlay : MonoBehaviour
 
 					if (currentOverlayShape != OverlayShape.Cubemap && currentOverlayShape != OverlayShape.OffcenterCubemap)
 						et = Texture2D.CreateExternalTexture(size.w, size.h, txFormat, mipLevels > 1, isSrgb, externalTex);
-#if UNITY_2017_1_OR_NEWER
+#if UNITY_2017_1_OR_NEWERa
 					else
-						et = Cubemap.CreateExternalTexture(size.w, size.h, txFormat, mipLevels > 1, isSrgb, externalTex);
+						et = Cubemap.CreateExternalTexture(size.w, txFormat, mipLevels > 1, externalTex);
 #endif
 					
 					externalTextures[eyeId][stage] = et;
