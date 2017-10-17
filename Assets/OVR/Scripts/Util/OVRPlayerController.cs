@@ -146,16 +146,31 @@ public class OVRPlayerController : MonoBehaviour
 
 	void Update()
 	{
+        OVRInput.Update();
 		//Use keys to ratchet rotation
 		if (Input.GetKeyDown(KeyCode.Q))
 			buttonRotation -= RotationRatchet;
 
 		if (Input.GetKeyDown(KeyCode.E))
 			buttonRotation += RotationRatchet;
-	}
+
+        if (OVRInput.Get(OVRInput.Button.PrimaryTouchpad))
+        {
+            Vector2 pressPosition = OVRInput.Get(OVRInput.Axis2D.PrimaryTouchpad);
+            if (pressPosition.x < 0)
+            {
+                buttonRotation -= RotationRatchet;
+            }
+            if (pressPosition.x > 0)
+            {
+                buttonRotation += RotationRatchet;
+            }
+        }
+    }
 
 	protected virtual void UpdateController()
 	{
+        
 		if (useProfileData)
 		{
 			if (InitialPose == null)
@@ -230,8 +245,14 @@ public class OVRPlayerController : MonoBehaviour
 
 	public virtual void UpdateMovement()
 	{
-		if (HaltUpdateMovement)
+        OVRInput.Update();
+        if (HaltUpdateMovement)
 			return;
+
+        if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger))
+        {
+            Jump();
+        }
 
 		bool moveForward = Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow);
 		bool moveLeft = Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow);
@@ -239,8 +260,29 @@ public class OVRPlayerController : MonoBehaviour
 		bool moveBack = Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow);
 
 		bool dpad_move = false;
+        if (OVRInput.GetActiveController() == OVRInput.Controller.LTrackedRemote ||
+            OVRInput.GetActiveController() == OVRInput.Controller.RTrackedRemote)
+        {
+            
+            if (OVRInput.Get(OVRInput.Touch.PrimaryTouchpad) && !OVRInput.Get(OVRInput.Button.PrimaryTouchpad))
+            {
+                Vector2 touchPosition = OVRInput.Get(OVRInput.Axis2D.PrimaryTouchpad);
+                if(touchPosition.y > 0)
+                {
+                    moveForward = true;
+                    dpad_move = true;
+                }
 
-		if (OVRInput.Get(OVRInput.Button.DpadUp))
+                if (touchPosition.y < 0)
+                {
+                    moveBack = true;
+                    dpad_move = true;
+                }
+                
+            }
+        }
+        
+        /*if (OVRInput.Get(OVRInput.Button.DpadUp))
 		{
 			moveForward = true;
 			dpad_move   = true;
@@ -251,9 +293,9 @@ public class OVRPlayerController : MonoBehaviour
 		{
 			moveBack  = true;
 			dpad_move = true;
-		}
+		}*/
 
-		MoveScale = 1.0f;
+       MoveScale = 1.0f;
 
 		if ( (moveForward && moveLeft) || (moveForward && moveRight) ||
 			 (moveBack && moveLeft)    || (moveBack && moveRight) )
@@ -337,7 +379,7 @@ public class OVRPlayerController : MonoBehaviour
 		euler.y += secondaryAxis.x * rotateInfluence;
 
 		transform.rotation = Quaternion.Euler(euler);
-	}
+    }
 
 	/// <summary>
 	/// Invoked by OVRCameraRig's UpdatedAnchors callback. Allows the Hmd rotation to update the facing direction of the player.
@@ -468,5 +510,10 @@ public class OVRPlayerController : MonoBehaviour
 			transform.rotation = Quaternion.Euler(euler);
 		}
 	}
+
+    public void ChangeOrientation()
+    {
+
+    }
 }
 
