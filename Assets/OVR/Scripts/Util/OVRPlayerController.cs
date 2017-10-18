@@ -78,10 +78,15 @@ public class OVRPlayerController : MonoBehaviour
 	/// </summary>
 	public bool useProfileData = true;
 
-	protected CharacterController Controller = null;
+    //Game specific variables
+    public float stepSpeed;
+    public AudioClip[] footstepSounds;    // an array of footstep sounds that will be randomly selected from.
+    private AudioSource audioSource;
+
+    protected CharacterController Controller = null;
 	protected OVRCameraRig CameraRig = null;
 
-	private float MoveScale = 1.0f;
+	private float MoveScale = .5f;
 	private Vector3 MoveThrottle = Vector3.zero;
 	private float FallSpeed = 0.0f;
 	private OVRPose? InitialPose;
@@ -101,7 +106,8 @@ public class OVRPlayerController : MonoBehaviour
 		var p = CameraRig.transform.localPosition;
 		p.z = OVRManager.profile.eyeDepth;
 		CameraRig.transform.localPosition = p;
-	}
+        audioSource = GetComponent<AudioSource>();
+    }
 
 	void Awake()
 	{
@@ -157,13 +163,16 @@ public class OVRPlayerController : MonoBehaviour
         if (OVRInput.Get(OVRInput.Button.PrimaryTouchpad))
         {
             Vector2 pressPosition = OVRInput.Get(OVRInput.Axis2D.PrimaryTouchpad);
-            if (pressPosition.x < 0)
+            if (pressPosition.y < .5 && pressPosition.y > -.5)
             {
-                buttonRotation -= RotationRatchet;
-            }
-            if (pressPosition.x > 0)
-            {
-                buttonRotation += RotationRatchet;
+                if (pressPosition.x < 0)
+                {
+                    buttonRotation -= RotationRatchet;
+                }
+                if (pressPosition.x > 0)
+                {
+                    buttonRotation += RotationRatchet;
+                }
             }
         }
     }
@@ -263,7 +272,6 @@ public class OVRPlayerController : MonoBehaviour
         if (OVRInput.GetActiveController() == OVRInput.Controller.LTrackedRemote ||
             OVRInput.GetActiveController() == OVRInput.Controller.RTrackedRemote)
         {
-            
             if (OVRInput.Get(OVRInput.Touch.PrimaryTouchpad) && !OVRInput.Get(OVRInput.Button.PrimaryTouchpad))
             {
                 Vector2 touchPosition = OVRInput.Get(OVRInput.Axis2D.PrimaryTouchpad);
@@ -278,10 +286,9 @@ public class OVRPlayerController : MonoBehaviour
                     moveBack = true;
                     dpad_move = true;
                 }
-                
+                PlayFootStepAudio();
             }
         }
-        
         /*if (OVRInput.Get(OVRInput.Button.DpadUp))
 		{
 			moveForward = true;
@@ -426,11 +433,30 @@ public class OVRPlayerController : MonoBehaviour
 		FallSpeed = 0.0f;
 	}
 
-	/// <summary>
-	/// Gets the move scale multiplier.
-	/// </summary>
-	/// <param name="moveScaleMultiplier">Move scale multiplier.</param>
-	public void GetMoveScaleMultiplier(ref float moveScaleMultiplier)
+    #region Game specific methods
+    
+    private void PlayFootStepAudio()
+    {
+        if (!Controller.isGrounded)
+        {
+            return;
+        }
+        // pick & play a random footstep sound from the array,
+        // excluding sound at index 0
+        int n = Random.Range(1, footstepSounds.Length);
+        audioSource.clip = footstepSounds[n];
+        audioSource.PlayOneShot(audioSource.clip);
+        // move picked sound to index 0 so it's not picked next time
+        footstepSounds[n] = footstepSounds[0];
+        footstepSounds[0] = audioSource.clip;
+    }
+    #endregion
+
+    /// <summary>
+    /// Gets the move scale multiplier.
+    /// </summary>
+    /// <param name="moveScaleMultiplier">Move scale multiplier.</param>
+    public void GetMoveScaleMultiplier(ref float moveScaleMultiplier)
 	{
 		moveScaleMultiplier = MoveScaleMultiplier;
 	}
@@ -510,10 +536,5 @@ public class OVRPlayerController : MonoBehaviour
 			transform.rotation = Quaternion.Euler(euler);
 		}
 	}
-
-    public void ChangeOrientation()
-    {
-
-    }
 }
 
