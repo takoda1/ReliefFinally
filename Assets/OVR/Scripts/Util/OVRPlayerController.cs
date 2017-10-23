@@ -76,12 +76,13 @@ public class OVRPlayerController : MonoBehaviour
 	/// <summary>
 	/// If true, each OVRPlayerController will use the player's physical height.
 	/// </summary>
-	public bool useProfileData = true;
+	public bool useProfileData = false;
 
     //Game specific variables
     public float stepSpeed;
-    public AudioClip[] footstepSounds;    // an array of footstep sounds that will be randomly selected from.
+    public AudioClip footstepSound;
     private AudioSource audioSource;
+    private bool isMoving = false;
 
     protected CharacterController Controller = null;
 	protected OVRCameraRig CameraRig = null;
@@ -274,6 +275,7 @@ public class OVRPlayerController : MonoBehaviour
         {
             if (OVRInput.Get(OVRInput.Touch.PrimaryTouchpad) && !OVRInput.Get(OVRInput.Button.PrimaryTouchpad))
             {
+                Debug.unityLogger.Log("ABC", "A MESSAGE");
                 Vector2 touchPosition = OVRInput.Get(OVRInput.Axis2D.PrimaryTouchpad);
                 if(touchPosition.y > 0)
                 {
@@ -286,8 +288,13 @@ public class OVRPlayerController : MonoBehaviour
                     moveBack = true;
                     dpad_move = true;
                 }
-                PlayFootStepAudio();
+                isMoving = true;
             }
+            else
+            {
+                isMoving = false;
+            }
+            UpdateFootstepAudio();
         }
         /*if (OVRInput.Get(OVRInput.Button.DpadUp))
 		{
@@ -302,7 +309,7 @@ public class OVRPlayerController : MonoBehaviour
 			dpad_move = true;
 		}*/
 
-       MoveScale = 1.0f;
+        MoveScale = 1.0f;
 
 		if ( (moveForward && moveLeft) || (moveForward && moveRight) ||
 			 (moveBack && moveLeft)    || (moveBack && moveRight) )
@@ -435,20 +442,33 @@ public class OVRPlayerController : MonoBehaviour
 
     #region Game specific methods
     
-    private void PlayFootStepAudio()
+    private void UpdateFootstepAudio()
     {
         if (!Controller.isGrounded)
         {
             return;
         }
+        if(isMoving && audioSource.isPlaying)
+        {
+            return;
+        }
+        else if(isMoving && !audioSource.isPlaying)
+        {
+            audioSource.Play();
+        }
+        else if(!isMoving && audioSource.isPlaying)
+        {
+            audioSource.Stop();
+        }
         // pick & play a random footstep sound from the array,
         // excluding sound at index 0
-        int n = Random.Range(1, footstepSounds.Length);
-        audioSource.clip = footstepSounds[n];
-        audioSource.PlayOneShot(audioSource.clip);
+        //int n = Random.Range(1, footstepSounds.Length);
+        //audioSource.clip = footstepSound;
+        //audioSource.Play();
+        //audioSource.PlayOneShot(audioSource.clip);
         // move picked sound to index 0 so it's not picked next time
-        footstepSounds[n] = footstepSounds[0];
-        footstepSounds[0] = audioSource.clip;
+        //footstepSounds[n] = footstepSounds[0];
+        //footstepSounds[0] = audioSource.clip;
     }
     #endregion
 
