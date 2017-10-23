@@ -21,10 +21,10 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 947
-  m_MinSize: {x: 713, y: 392}
-  m_MaxSize: {x: 18008, y: 14042}
+  m_MinSize: {x: 709, y: 392}
+  m_MaxSize: {x: 18004, y: 14042}
   vertical: 0
-  controlID: 2808
+  controlID: 5187
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -119,8 +119,8 @@ MonoBehaviour:
     y: 0
     width: 409
     height: 947
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 4}
   m_Panes:
   - {fileID: 4}
@@ -154,9 +154,9 @@ MonoBehaviour:
     height: 926
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: b2360000
-    m_LastClickedID: 14002
-    m_ExpandedIDs: 18fcffff00000000
+    m_SelectedIDs: a64a0000
+    m_LastClickedID: 19110
+    m_ExpandedIDs: 7adeffff86f7ffff000000006a4a0000a64a0000344c0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -175,7 +175,7 @@ MonoBehaviour:
       m_ClientGUIView: {fileID: 3}
     m_SearchString: 
   m_ExpandedScenes:
-  - DefaultPlaneScene
+  - SnowyMountainScene
   m_CurrenRootInstanceID: 0
   m_Locked: 0
   m_CurrentSortingName: TransformSorting
@@ -202,7 +202,7 @@ MonoBehaviour:
   m_MinSize: {x: 234, y: 392}
   m_MaxSize: {x: 10004, y: 14042}
   vertical: 1
-  controlID: 2809
+  controlID: 5188
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -258,14 +258,14 @@ MonoBehaviour:
     width: 948
     height: 486
   m_SceneLighting: 1
-  lastFramingTime: 4544.079288565581
+  lastFramingTime: 1817.2263400973318
   m_2DMode: 0
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 206.84984, y: 18.373747, z: 359.5385}
+    m_Target: {x: 276.099, y: -2.8461828, z: 244.01749}
     speed: 2
-    m_Value: {x: 206.84984, y: 18.373747, z: 359.5385}
+    m_Value: {x: 276.099, y: -2.8461828, z: 244.01749}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -288,13 +288,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: -0.29311672, y: -0.22496313, z: 0.071160324, w: -0.92650443}
+    m_Target: {x: 0.13600993, y: 0.29364532, z: -0.04224068, w: 0.94524574}
     speed: 2
-    m_Value: {x: -0.29311672, y: -0.22496311, z: 0.071160324, w: -0.9265044}
+    m_Value: {x: 0.13600993, y: 0.29364532, z: -0.04224068, w: 0.94524574}
   m_Size:
-    m_Target: 26.305658
+    m_Target: 44.474823
     speed: 2
-    m_Value: 26.305658
+    m_Value: 44.474823
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -442,19 +442,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/OVR/Scripts/Util
+    - Assets/custom_assets/Textures
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/OVR/Scripts/Util
+  - Assets/custom_assets/Textures
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\takoda\Documents\ReliefFinally
   m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 286}
-    m_SelectedIDs: 942a0000
-    m_LastClickedID: 10900
-    m_ExpandedIDs: 00000000de2700005c280000be280000e4280000f6290000fa2b00008c2c00009c2d0000022e0000022f0000aa2f0000e83100005a32000074330000c433000034340000623400008034000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: 444e0000
+    m_LastClickedID: 20036
+    m_ExpandedIDs: 0000000038280000b6280000182900003e290000502a0000542c0000e62c0000f62d00005c2e00005c2f0000043000003c320000ae320000c83300001834000088340000b6340000d434000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -482,7 +482,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000de2700005c280000be280000e4280000f6290000fa2b00008c2c00009c2d0000022e0000022f0000aa2f0000e83100005a32000074330000c433000034340000623400008034000000ca9a3bffffff7f
+    m_ExpandedIDs: 0000000038280000b6280000182900003e290000502a0000542c0000e62c0000f62d00005c2e00005c2f0000043000003c320000ae320000c83300001834000088340000b6340000d434000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -507,8 +507,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: b2360000
-    m_LastClickedInstanceID: 14002
+    m_SelectedInstanceIDs: a64a0000
+    m_LastClickedInstanceID: 19110
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: 6c06000000000000
     m_RenameOverlay:
@@ -555,8 +555,8 @@ MonoBehaviour:
     y: 0
     width: 559
     height: 947
-  m_MinSize: {x: 277, y: 71}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 13}
