@@ -275,7 +275,6 @@ public class OVRPlayerController : MonoBehaviour
         {
             if (OVRInput.Get(OVRInput.Touch.PrimaryTouchpad) && !OVRInput.Get(OVRInput.Button.PrimaryTouchpad))
             {
-                Debug.unityLogger.Log("ABC", "A MESSAGE");
                 Vector2 touchPosition = OVRInput.Get(OVRInput.Axis2D.PrimaryTouchpad);
                 if(touchPosition.y > 0)
                 {
