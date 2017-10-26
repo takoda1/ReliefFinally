@@ -200,7 +200,7 @@ public class TerrainAccessor : MonoBehaviour {
 
     IEnumerator eraseCurrentStatus()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(3);
         accessUpdate.text = "";
     }
 

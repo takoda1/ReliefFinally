@@ -79,7 +79,6 @@ public class OVRPlayerController : MonoBehaviour
 	public bool useProfileData = false;
 
     //Game specific variables
-    public float stepSpeed;
     public AudioClip footstepSound;
     private AudioSource audioSource;
     private bool isMoving = false;
@@ -259,10 +258,10 @@ public class OVRPlayerController : MonoBehaviour
         if (HaltUpdateMovement)
 			return;
 
-        if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger))
+        /*if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger))
         {
             Jump();
-        }
+        }*/
 
 		bool moveForward = Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow);
 		bool moveLeft = Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow);
@@ -319,6 +318,11 @@ public class OVRPlayerController : MonoBehaviour
 			MoveScale = 0.0f;
 
 		MoveScale *= SimulationRate * Time.deltaTime;
+
+        if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger))
+        {
+            MoveScale *= 2.0f;
+        }
 
 		// Compute this for key movement
 		float moveInfluence = Acceleration * 0.1f * MoveScale * MoveScaleMultiplier;
