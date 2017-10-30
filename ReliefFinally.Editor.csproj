@@ -149,6 +149,7 @@
     <Compile Include="Assets\OVR\Editor\OVRScreenshotWizard.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Grass And Flowers Pack 1\Example Scene\Skyboxes\_skybox info.txt" />
     <None Include="Assets\Misc Store assets\RainMaker\Prefab\RainShader.shader" />
     <None Include="Assets\Misc Store assets\RainMaker\Readme.txt" />
     <None Include="Assets\OVR\Editor\AndroidManifest.OVRSubmission.xml" />

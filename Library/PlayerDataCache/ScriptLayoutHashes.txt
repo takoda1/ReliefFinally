@@ -121,6 +121,7 @@ e9bdabf9265d758d56f01bb188916fa8 UnityEngine.Networking.dll:UnityEngine.Networki
 528ea1fd7c01796fc60c4e2f172ea229 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformVisualizer
 78a2a366a0a3b585e1178d2dd9d006ab Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.WaypointProgressTracker
 553ff5d0002cbffba3ed36471545c0c9 Assembly-CSharp.dll:.OVRGearVrController
+806bde7bf7b8cd94b3454407dc417485 Assembly-CSharp.dll:.SimpleTextureDrawing
 0574af451ceb3972eac594b6a7ae9acc Assembly-CSharp.dll:.SardineCameraScript
 906e542f73c16f47e66555cf3a973bfe Assembly-CSharp.dll:.whaleRunsAway
 5a6e1372ae744b50249c79ff008dd8e8 Assembly-CSharp.dll:.TerrainAccessor

@@ -92,6 +92,7 @@
     <Compile Include="Assets\custom_assets\Animals\Sardine\Scripts\SardineCameraScript.cs" />
     <Compile Include="Assets\custom_assets\Animals\Sardine\Scripts\SardineCharacter.cs" />
     <Compile Include="Assets\custom_assets\Animals\Sardine\Scripts\SardineUserController.cs" />
+    <Compile Include="Assets\Grass And Flowers Pack 1\Example Scene\SimpleTextureDrawing.cs" />
     <Compile Include="Assets\Misc Store assets\RainMaker\Demo\DemoScript.cs" />
     <Compile Include="Assets\Misc Store assets\RainMaker\Demo\DemoScript2D.cs" />
     <Compile Include="Assets\Misc Store assets\RainMaker\Demo\DemoScriptStartRainOnSpaceBar.cs" />
@@ -143,6 +144,7 @@
     <Compile Include="Assets\Scripts\Plains Scripts\PlainsTigerRun.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Grass And Flowers Pack 1\Example Scene\Skyboxes\_skybox info.txt" />
     <None Include="Assets\Misc Store assets\RainMaker\Prefab\RainShader.shader" />
     <None Include="Assets\Misc Store assets\RainMaker\Readme.txt" />
     <None Include="Assets\OVR\Editor\AndroidManifest.OVRSubmission.xml" />
