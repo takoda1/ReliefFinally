@@ -79,8 +79,7 @@ public class OVRPlayerController : MonoBehaviour
 	public bool useProfileData = false;
 
     //Game specific variables
-    public AudioClip footstepSound;
-    private AudioSource audioSource;
+    private AudioSource footstepAudioSource;
     private bool isMoving = false;
 
     protected CharacterController Controller = null;
@@ -106,7 +105,7 @@ public class OVRPlayerController : MonoBehaviour
 		var p = CameraRig.transform.localPosition;
 		p.z = OVRManager.profile.eyeDepth;
 		CameraRig.transform.localPosition = p;
-        audioSource = GetComponent<AudioSource>();
+        footstepAudioSource = GetComponent<AudioSource>();
     }
 
 	void Awake()
@@ -451,17 +450,17 @@ public class OVRPlayerController : MonoBehaviour
         {
             return;
         }
-        if(isMoving && audioSource.isPlaying)
+        if(isMoving && footstepAudioSource.isPlaying)
         {
             return;
         }
-        else if(isMoving && !audioSource.isPlaying)
+        else if(isMoving && !footstepAudioSource.isPlaying)
         {
-            audioSource.Play();
+            footstepAudioSource.Play();
         }
-        else if(!isMoving && audioSource.isPlaying)
+        else if(!isMoving && footstepAudioSource.isPlaying)
         {
-            audioSource.Stop();
+            footstepAudioSource.Stop();
         }
         // pick & play a random footstep sound from the array,
         // excluding sound at index 0

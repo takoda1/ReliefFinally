@@ -144,16 +144,13 @@ public class TerrainAccessor : MonoBehaviour {
 	void OnControllerColliderHit(ControllerColliderHit hit) {
 		attemptTravel (hit.collider.tag);
 	}
-		
-	void OnTriggerStay(Collider hit) {
-		attemptTravel (hit.tag);
-	}
 
-	void OnTriggerExit(Collider hit) {
-		accessUpdate.text = "";
-	}
-		
-	void attemptTravel(string accessor) {
+    private void OnTriggerEnter(Collider hit)
+    {
+        attemptTravel(hit.tag);
+    }
+
+    void attemptTravel(string accessor) {
 		switch (accessor) {
 		case "snowyTerrainAccessor":
 			if (ReliefStats.instance.HAS_ACCESS_TO_SNOWY_TERRAIN) {
