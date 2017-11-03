@@ -46,9 +46,9 @@ public class ReliefStats : MonoBehaviour {
         SNOWY_TERRAIN_MAX_COLLECT = snowyPieces;
 
         UNDERWATER_TERRAIN_MAX_COLLECT = underwaterPieces;
-        HAS_ACCESS_TO_SNOWY_TERRAIN = false;
+        HAS_ACCESS_TO_SNOWY_TERRAIN = true;
         HAS_ACCESS_TO_UNDERWATER_TERRAIN = false;
-        currentSnowyTerrainProgress = 0;
+        currentSnowyTerrainProgress = snowyPieces;
         currentUnderwaterTerrainProgress = 0;
         snowyTerrainPiecesFound = new bool[snowyPieces];
         underwaterTerrainPiecesFound = new bool[underwaterPieces];
