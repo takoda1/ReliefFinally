@@ -46,9 +46,9 @@ public class ReliefStats : MonoBehaviour {
         SNOWY_TERRAIN_MAX_COLLECT = snowyPieces;
 
         UNDERWATER_TERRAIN_MAX_COLLECT = underwaterPieces;
-        HAS_ACCESS_TO_SNOWY_TERRAIN = true;
+        HAS_ACCESS_TO_SNOWY_TERRAIN = false;
         HAS_ACCESS_TO_UNDERWATER_TERRAIN = false;
-        currentSnowyTerrainProgress = snowyPieces;
+        currentSnowyTerrainProgress = 0;
         currentUnderwaterTerrainProgress = 0;
         snowyTerrainPiecesFound = new bool[snowyPieces];
         underwaterTerrainPiecesFound = new bool[underwaterPieces];
@@ -60,27 +60,7 @@ public class ReliefStats : MonoBehaviour {
         NO_ACCESS_UNDERWATER_TERRAIN = "You have {0} scuba gear pieces left before you can access Barnacle Waters.";
         ACCESS_SNOWY_TERRAIN = "Access Granted! You are using your snow coat to access Frigid Cliff...";
         ACCESS_UNDERWATER_TERRAIN = "Access Granted! You are using your scuba gear to access Barnacle Waters...";
-
-        //global game object preparation
-        MeshRenderer[] children = null;
-        GameObject caveParts = GameObject.Find("Cave parts");
-        if (caveParts != null)
-        {
-            children = caveParts.GetComponentsInChildren<MeshRenderer>();
-        }
-        if (children != null)
-        {
-            foreach (MeshRenderer comp in children)
-            {
-                GameObject child = comp.gameObject;
-                child.AddComponent<Rigidbody>();
-                Rigidbody rb = child.GetComponent<Rigidbody>();
-                rb.isKinematic = true;
-                rb.useGravity = true;
-                child.AddComponent<MeshCollider>();
-            }
-        }
-
+        
         DontDestroyOnLoad(instance);
     }
 }
