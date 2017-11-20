@@ -139,15 +139,22 @@
     <Compile Include="Assets\OVR\Scripts\Util\OVRSceneSampleController.cs" />
     <Compile Include="Assets\OVR\Scripts\Util\OVRScreenFade.cs" />
     <Compile Include="Assets\OVR\Scripts\Util\OVRWaitCursor.cs" />
-    <Compile Include="Assets\Scripts\GlobalScripts\BackgroundMusic.cs" />
-    <Compile Include="Assets\Scripts\GlobalScripts\PickupShape.cs" />
-    <Compile Include="Assets\Scripts\GlobalScripts\Preserve.cs" />
-    <Compile Include="Assets\Scripts\GlobalScripts\ReliefStats.cs" />
-    <Compile Include="Assets\Scripts\GlobalScripts\TerrainAccessor.cs" />
-    <Compile Include="Assets\Scripts\GlobalScripts\UniqueIdDrawer.cs" />
     <Compile Include="Assets\Scripts\Misc or Unused Scripts\makeTransparent.cs" />
     <Compile Include="Assets\Scripts\Misc or Unused Scripts\whaleRunsAway.cs" />
     <Compile Include="Assets\Scripts\Plains Scripts\PlainsTigerRun.cs" />
+    <Compile Include="Assets\Scripts\Standard Scripts\BackgroundMusic.cs" />
+    <Compile Include="Assets\Scripts\Standard Scripts\GearVREyeRaycaster.cs" />
+    <Compile Include="Assets\Scripts\Standard Scripts\InteractiveItem.cs" />
+    <Compile Include="Assets\Scripts\Standard Scripts\MenuItemInteractiveItem.cs" />
+    <Compile Include="Assets\Scripts\Standard Scripts\PickupShape.cs" />
+    <Compile Include="Assets\Scripts\Standard Scripts\Preserve.cs" />
+    <Compile Include="Assets\Scripts\Standard Scripts\ReliefStats.cs" />
+    <Compile Include="Assets\Scripts\Standard Scripts\ReturnToMainMenu.cs" />
+    <Compile Include="Assets\Scripts\Standard Scripts\TerrainAccessor.cs" />
+    <Compile Include="Assets\Scripts\Standard Scripts\UniqueIdDrawer.cs" />
+    <Compile Include="Assets\Scripts\Standard Scripts\VREyeRaycaster.cs" />
+    <Compile Include="Assets\Scripts\Standard Scripts\VRInput.cs" />
+    <Compile Include="Assets\Scripts\Standard Scripts\VRInteractiveItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Grass And Flowers Pack 1\Example Scene\Skyboxes\_skybox info.txt" />

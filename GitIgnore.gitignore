@@ -1,0 +1,4 @@
+./Temp/*
+./Library/ShaderCache/*
+*.apk
+*.unity3d
