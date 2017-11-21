@@ -29,6 +29,9 @@ public class TerrainAccessor : MonoBehaviour {
         string environment = SceneManager.GetActiveScene().name;
         switch (environment)
         {
+            case "TutorialScene":
+                currentEnvironment = "tutorial";
+                break;
             case "GrassyPlainsScene":
                 currentEnvironment = "grassy";
                 break;

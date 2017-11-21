@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ReturnToMainMenu : MonoBehaviour {
     private GameObject progression;
@@ -13,7 +14,8 @@ public class ReturnToMainMenu : MonoBehaviour {
     // Update is called once per frame
     void Update () {
         OVRInput.Update();
-        if(OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) && OVRInput.Get(OVRInput.Button.PrimaryTouchpad))
+        Vector3 touchPosition = OVRInput.Get(OVRInput.Axis2D.PrimaryTouchpad);
+        if(OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) && OVRInput.Get(OVRInput.Button.PrimaryTouchpad) && touchPosition.x > -.2 && touchPosition.x < .2 && touchPosition.y > -.2 && touchPosition.y < .2)
         {
             SceneManager.LoadScene("MainMenuScene");
             GameObject.Destroy(progression);
