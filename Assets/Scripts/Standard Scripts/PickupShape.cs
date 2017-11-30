@@ -9,7 +9,6 @@ public class PickupShape : MonoBehaviour {
 	public Text piecePickupProgress;
 
 	void Start () {
-		piecePickupProgress.text = "";
 	}
 
 	void showPiecePickupProgress(string pieceType, GameObject piece) {

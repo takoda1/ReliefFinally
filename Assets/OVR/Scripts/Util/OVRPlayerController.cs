@@ -164,11 +164,11 @@ public class OVRPlayerController : MonoBehaviour
             Vector2 pressPosition = OVRInput.Get(OVRInput.Axis2D.PrimaryTouchpad);
             if (pressPosition.y < .5 && pressPosition.y > -.5)
             {
-                if (pressPosition.x < 0)
+                if (pressPosition.x < -.3)
                 {
                     buttonRotation -= RotationRatchet;
                 }
-                if (pressPosition.x > 0)
+                if (pressPosition.x > .3)
                 {
                     buttonRotation += RotationRatchet;
                 }
@@ -274,13 +274,13 @@ public class OVRPlayerController : MonoBehaviour
             if (OVRInput.Get(OVRInput.Touch.PrimaryTouchpad) && !OVRInput.Get(OVRInput.Button.PrimaryTouchpad))
             {
                 Vector2 touchPosition = OVRInput.Get(OVRInput.Axis2D.PrimaryTouchpad);
-                if(touchPosition.y > 0)
+                if(touchPosition.y > .3)
                 {
                     moveForward = true;
                     dpad_move = true;
                 }
 
-                if (touchPosition.y < 0)
+                if (touchPosition.y < -.3)
                 {
                     moveBack = true;
                     dpad_move = true;

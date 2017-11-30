@@ -23,6 +23,7 @@ fbb6714f36d2b7a0a55910ba69007e9d Assembly-CSharp.dll:DigitalRuby.RainMaker.RainS
 5979728add95abdc642051d92f726e95 Assembly-CSharp.dll:.OVRDebugHeadController
 92995fddd661d05b1e0066aa02955295 Assembly-CSharp.dll:.OVRManager
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp-firstpass.dll:.EventSystemChecker
+b869565bc446b10da6c6eaa8eb3a15be Assembly-CSharp.dll:.TypeText
 3b945a83fa61133bbb7c61d4d7012fd9 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Effects.Hose
 a35dc9cca2faebc5f5f1aeb9e8e47bbe UnityEngine.UI.dll:UnityEngine.UI.AspectRatioFitter
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.UI.dll:UnityEngine.EventSystems.BaseInput
@@ -105,6 +106,7 @@ ff05dcdf90651c3d98a9cad3df5e471e UnityEngine.Timeline.dll:UnityEngine.Timeline.C
 7b848b7feaa524953d09fc1851efa6da UnityEngine.Timeline.dll:UnityEngine.Timeline.GroupTrack
 7b848b7feaa524953d09fc1851efa6da UnityEngine.Timeline.dll:UnityEngine.Timeline.PlayableTrack
 c24a21b131bfa67be1162db2cba4b52b UnityEngine.Timeline.dll:UnityEngine.Timeline.TimelineAsset
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.Tutorial
 fc1e0f4d8439d9928083474691511a13 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
 60b2bb652410a5867a5ab9a01cd38461 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkDiscovery
@@ -125,7 +127,6 @@ e9bdabf9265d758d56f01bb188916fa8 UnityEngine.Networking.dll:UnityEngine.Networki
 0574af451ceb3972eac594b6a7ae9acc Assembly-CSharp.dll:.SardineCameraScript
 906e542f73c16f47e66555cf3a973bfe Assembly-CSharp.dll:.whaleRunsAway
 5a6e1372ae744b50249c79ff008dd8e8 Assembly-CSharp.dll:.TerrainAccessor
-05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.Preserve
 6e714b24188cddfc9ae1e07d05ed4ddd Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.ParticleSystemDestroyer
 879b3df2ab67cfd00172f75f85a7a583 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.SimpleMouseRotator
 bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.AudioSpatializerMicrosoft
@@ -201,7 +202,6 @@ b1f0704fc1b542c80ecf3fa1bbf472a1 Assembly-CSharp-firstpass.dll:UnityStandardAsse
 5f2ad81aa8994e8fbe25d1e57afe6773 UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.PlaymodeTestsController
 64eb32cc721b1cc68a91ed57461e188c UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.Callbacks.RemoteTestResultSender
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp-firstpass.dll:.AlphaButtonClickMask
-7b48f7206f2bb28d7bd217884729e175 Assembly-CSharp.dll:VRStandardAssets.Utils.VREyeRaycaster
 d2af69ce28cda6fcf0b7728ae3f251b4 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.DynamicShadowSettings
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.GearVREyeRaycaster
 602017ac837ce39de79e6b98478ee720 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.SimpleActivatorMenu
@@ -217,7 +217,6 @@ db7142046f9ea798443d2ead1a634a8d Assembly-CSharp.dll:.IwasiRigid
 c9576c6a51e2e71bc5caab85a96801e8 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Effects.SmokeParticles
 db3b233e35a88802fed1717d19c3d9ec Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.FollowTarget
 b3682aa2938761963cea8e49e3349b0a Assembly-CSharp.dll:.PlainsTigerRun
-05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:VRStandardAssets.Utils.VRInteractiveItem
 4dfe33d9090a45557c2c14e3b464ad87 Assembly-CSharp.dll:.OVRLint
 a8796ecdc9d5c260bbe32f30c4b10708 Assembly-CSharp-firstpass.dll:UnityStandardAssets.CrossPlatformInput.TouchPad
 b7f557c19cce3b6f593e26edfe1ec859 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Vehicles.Ball.Ball
@@ -228,7 +227,6 @@ fa9fdc007d5d9cac522eaaecc40261a9 Assembly-CSharp.dll:.IwasiMove
 f4b175ffc1eeca85d2783436b4c764a7 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Effects.Explosive
 6746ad828d32ad6e5c07a63950fd4be6 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Water.WaterTile
 ef6362b58af8a7f2dfd07f8c5f0bb4c5 Assembly-CSharp.dll:.SardineCharacter
-0638dc411945487ebf110613b88c0263 Assembly-CSharp.dll:VRStandardAssets.Utils.VRInput
 bcfc20d487bd118a9c10b5e5edd279cb Assembly-CSharp.dll:DigitalRuby.RainMaker.DemoScriptStartRainOnSpaceBar
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.FPSCounter
 0a6c82061bcda3c3322ce3bba26fd9b5 Assembly-CSharp.dll:DigitalRuby.RainMaker.DemoScript2D

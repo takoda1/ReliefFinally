@@ -29,7 +29,7 @@ public class GearVREyeRaycaster : MonoBehaviour {
             if(currentInteractible != null && currentInteractible != lastInteractible)
                 currentInteractible.Over();
 
-            //Deactivate last interactive item
+            //Deactivate last interactive item if it isn't the same as the current item
             if (currentInteractible != lastInteractible)
                 DeactivateLastInteractible();
 
