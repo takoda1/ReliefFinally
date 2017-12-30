@@ -42,7 +42,7 @@ public class ReliefStats : MonoBehaviour {
             instance = this;
         else if (instance != this)
             Destroy(gameObject);
-        VRSettings.enabled = true;
+        UnityEngine.XR.XRSettings.enabled = true;
         SNOWY_TERRAIN_MAX_COLLECT = snowyPieces;
 
         UNDERWATER_TERRAIN_MAX_COLLECT = underwaterPieces;
