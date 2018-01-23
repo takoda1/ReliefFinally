@@ -7,19 +7,8 @@ using UnityEngine.SceneManagement;
 public class TerrainAccessor : MonoBehaviour {
 	
 	public Text accessUpdate;
-	public GameObject fpc;
-	public AudioClip barnacleWatersBackgroundMusic = null;
-	public AudioClip grassyPlainsBackgroundMusic = null;
 
 	private string currentEnvironment;
-    private bool isUnderwater;
-	private Color normalAtmosphereColor;
-	private Color underwaterAtmosphereColor;
-	private float normalFogDensity;
-	private float underwaterFogDensity;
-	private Material noSkybox = null;
-	private GameObject waterLine;
-	private string[] particleSystems = new string[0];
 	private bool snowySceneLoaded = false;
     
 
@@ -43,108 +32,11 @@ public class TerrainAccessor : MonoBehaviour {
                 currentEnvironment = "underwater";
                 break;
         }
-		normalAtmosphereColor = new Color (0.5f, 0.5f, 0.5f, 0.5f);
-		underwaterAtmosphereColor = new Color(0.4f, 0.6f, 1.0f, 0.8f);
-		normalFogDensity = 0.002f;
-		underwaterFogDensity = 0.01f;
-        if (currentEnvironment.Equals("underwater"))
-        {
-            waterLine = GameObject.Find("TopWaterLayer");
-        }
-        else
-        {
-            muteOceanParticleSystems();
-        }
-		particleSystems = new string[] {
-			"UnderwaterParticleSystem",
-			"UnderwaterParticleSystem-1",
-			"UnderwaterParticleSystem-2"
-		};
-		//fpc.transform.position = new Vector3 (1505.9f, 488.6f, 1197.0f);
-		//setUnderwaterAtmosphere ();
 	}
 
 	void Update() {
 
-        //If the player is in the underwater environment and happens to fall below the water line, the atmosphere
-        //will change to mimic an underwater experience.
-        if (currentEnvironment.Equals("underwater")){
-		    if (!isUnderwater) {
-			    if (waterLine != null && transform.position.y < waterLine.transform.position.y) {
-				    setUnderwaterAtmosphere ();
-				    isUnderwater = true;
-			    }
-		    } else if(isUnderwater) {
-			    if (waterLine != null && transform.position.y > waterLine.transform.position.y) {
-				    resetAtmosphere ();
-				    isUnderwater = false;
-			    }
-		    }
-        }
     }
-
-	void setUnderwaterAtmosphere() {
-		RenderSettings.fogColor = underwaterAtmosphereColor;
-		RenderSettings.fogDensity = underwaterFogDensity;
-		RenderSettings.skybox = noSkybox;
-		Camera.main.backgroundColor = new Color(0, 0.4f, 0.7f, 1);
-		if (waterLine != null) {
-			waterLine.gameObject.SetActive (false);
-		}
-		GameObject.Find ("RowBoat").GetComponent<AudioSource> ().Play ();
-		if (barnacleWatersBackgroundMusic != null) {
-			AudioSource audio = GetComponent<AudioSource>();
-			audio.clip = barnacleWatersBackgroundMusic;
-			audio.Play();
-		}
-
-		RenderSettings.fog = true;
-		waterLine = GameObject.Find ("TopWaterLayer");
-		waterLine.SetActive (true);
-		oceanParticleSystemsTurnUp();
-
-	}
-
-	void resetAtmosphere() {
-		RenderSettings.fogColor = normalAtmosphereColor;
-		RenderSettings.fogDensity = normalFogDensity;
-		RenderSettings.fog = false;
-		if (waterLine != null) {
-			waterLine.gameObject.SetActive (true);
-		}
-		//GameObject.Find ("RowBoat").GetComponent<AudioSource>().Stop ();
-		//GameObject.Find ("PlaneUniverse").GetComponent<AudioSource>().Play ();
-		/*if (grassyPlainsBackgroundMusic != null) {
-			AudioSource audio = GetComponent<AudioSource>();
-			audio.clip = grassyPlainsBackgroundMusic;
-			audio.Play();
-		}*/
-		muteOceanParticleSystems ();
-	}
-
-	void muteOceanParticleSystems() {
-		waterLine = GameObject.Find ("TopWaterLayer");
-		if (waterLine != null) {
-			waterLine.SetActive (false);
-		}
-		foreach (string system in this.particleSystems) {
-			GameObject sys = GameObject.Find (system);
-			if(sys!=null) {
-				sys.SetActive(false);
-			}
-		}
-	}
-
-
-	void oceanParticleSystemsTurnUp () 
-	{
-		foreach (string system in particleSystems) {
-			GameObject sys = GameObject.Find (system);
-			if (sys != null) {
-				sys.SetActive (true);
-			}
-		}
-	}
 	
 	void OnControllerColliderHit(ControllerColliderHit hit) {
 		attemptTravel (hit.collider.tag);
@@ -162,7 +54,6 @@ public class TerrainAccessor : MonoBehaviour {
                 SceneManager.LoadScene ("SnowyMountainScene", LoadSceneMode.Single);
 				DigitalRuby.RainMaker.RainScript.isSnowFalling = true;
 				currentEnvironment = "snowy";
-				resetAtmosphere ();
 			} else {
 				int delta = ReliefStats.instance.SNOWY_TERRAIN_MAX_COLLECT - ReliefStats.instance.currentSnowyTerrainProgress;
 				accessUpdate.text = System.String.Format (ReliefStats.instance.NO_ACCESS_SNOWY_TERRAIN, delta);
@@ -186,7 +77,6 @@ public class TerrainAccessor : MonoBehaviour {
 			currentEnvironment = "grassy";
                 SceneManager.LoadScene("GrassyPlainsScene", LoadSceneMode.Single);
                 DigitalRuby.RainMaker.RainScript.isSnowFalling = false;
-			resetAtmosphere ();
 			break;
 		}
 	}

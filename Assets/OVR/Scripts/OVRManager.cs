@@ -710,9 +710,13 @@ public class OVRManager : MonoBehaviour
 		OVRPlugin.occlusionMesh = false;
 
 #if UNITY_EDITOR
-		EditorApplication.playmodeStateChanged += OnEditorApplicationPlaymodeStateChanged;
+		EditorApplication.playModeStateChanged += LogPlayModeState;
 #endif
 	}
+    private static void LogPlayModeState(PlayModeStateChange state)
+    {
+        Debug.Log(state);
+    }
 
 #if UNITY_EDITOR
 	private static bool _scriptsReloaded;
