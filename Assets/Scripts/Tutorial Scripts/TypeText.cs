@@ -3,12 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/*
+ * Used by: Takoda Ren
+ * Modified from original found at: http://wiki.unity3d.com/index.php?title=AutoType
+ * Description:
+ * Class that is attached to any Unity Text element.
+ * After calling the setText method, the text in the 
+ * Text element will begin typing with specified
+ * pause time defined in the pauseTime variable.
+ * 
+ * Used in the TutorialScene to make tutorial text
+ * run across the screen.
+ *
+ */
 public class TypeText : MonoBehaviour {
 
-    /*
-     * Class that attaches to a Text element.
-     * Using setText, the text in the Text element will begin typing.
-     */
     public float pauseTime = .1f;
 
     string text;
@@ -18,7 +27,6 @@ public class TypeText : MonoBehaviour {
     {
         textElement = GetComponent<Text>();
     }
-	
 	public bool setText(string text)
     {
         StopAllCoroutines();

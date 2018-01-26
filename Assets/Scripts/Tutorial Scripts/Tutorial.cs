@@ -3,68 +3,84 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+/*
+ * Created by: Takoda Ren
+ * Description:
+ * 
+ * Attach to a PlayerController GameObject with typeText component on one of
+ * the object's text-displaying children. 
+ * Whenever a trigger (a tutorial zone in concrete terms) is entered, 
+ * the tutorial zone's corresponding text is passed to the typeText
+ * object to have it start typing on whatever Gui is being used.
+ * 
+ * If there are still remaining lines of text to be typed,
+ * this class waits for the player to press the GearVR trigger
+ * button before advancing to the next line.
+ */ 
 public class Tutorial : MonoBehaviour {
 
     private TypeText typeText;
 
-    private Text treasureText;
+    private Text treasureText; 
 
-    private string[] introduction = {"Welcome to ReliefFinally! To advance through tutorial text, press the trigger button.",
-        "First, look around by moving your head, or look around by PRESSING left or right on the controller pad.",
-        "Remember, if you ever want to return to the main menu, you can always press the trigger and press the middle of the touch pad at the same time.",
-        "You can touch forward or backward on the touchpad to move forward or backward in the direction you are facing.",
-        "You can also sprint while moving by holding the trigger button.",
-        "Now, move toward the ---- marker up ahead for an explanation of maps."};
-    private string[] mapExplanation = {"This is an explanation for maps in ReliefFinally. ReliefFinally has a few maps you can explore.",
-        "The default map progression is Grassy Plains -> Snowy Mountain -> Barnacle Waters",
-        "What that means is each of those maps has treasures specific to the next map that you can collect to progress to the next map in the sequence",
-        "However, you can go straight to a specific map from the main menu if you want.",
-        "Each map has portals leading to all other worlds, so if you have collected all the treasures from all worlds you can access any world.",
-        "Now, move to the ---- marker ahead to the left for an explanation of treasures and portals."};
-    private string[] treasureExplanation = {"Each map has approximately 6 treasures that you can collect that will allow you to advance to the next world.",
-        "Look for the marker that labels a treasure and walk over and pick it up.",
-        "A portal will have textures that represent the world it allows access to.",
-        "To enter the Grassy Plains world, look for the marker that labels a portal and walk through the portal doors."
-    };
-
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
+        //initialize typeText variable
         typeText = GetComponentInChildren<TypeText>();
+
+        /*
+         * Specific to ReliefFinally tutorial, find the text-displaying
+         * GameObject above the tutorial treasure chest, and initialize
+         * the treasureText variable with the Text object from the
+         * mentioned GameObject.
+         */
         GameObject temp = GameObject.FindGameObjectWithTag("Treasure Text");
         treasureText = temp.GetComponentInChildren<Text>();
     }
 
+    //OVRInput needs to be updated to update whether the GearVR trigger is being pressed or not
     void Update()
     {
         OVRInput.Update();
     }
 
-    private void OnTriggerEnter(Collider other)
+    /*
+     * @param zone: The collider of the gameobject the player has collided with
+     * 
+     * If there is zoneText attached to the entered gameobject with trigger, it implies that the 
+     * gameobject entered is a tutorial zone, so all other Coroutines (such as StartTyping(),
+     * IsButtonPressed(), as well as Coroutines in the TypeText class) are ceased
+     * and the Coroutine StartTyping is started with the new zoneText.
+     */
+    private void OnTriggerEnter(Collider zone)
     {
-        switch (other.name)
+        string[] temp = zone.gameObject.GetComponent<ZoneText>().zoneText;
+        if(temp != null)
         {
-            case "Introduction":
-                StopAllCoroutines();
-                StartCoroutine(StartTyping(introduction));
-                break;
-            case "MapExplanation":
-                StopAllCoroutines();
-                StartCoroutine(StartTyping(mapExplanation));
-                break;
-            case "TreasureExplanation":
-                StopAllCoroutines();
-                StartCoroutine(StartTyping(treasureExplanation));
-                break;
-
+            StopAllCoroutines();
+            StartCoroutine(StartTyping(temp));
         }
     }
     
+    /*
+     * @param text: an array of strings to be typed
+     * 
+     * Sets every line of text in the parameter to the
+     * typeText object and in between each line waits
+     * for IsButtonPressed coroutine to return.
+     */
     IEnumerator StartTyping(string[] text)
     {
         int position = 0;
         do
         {
+            //setting typeText text automatically begins the typing coroutine in typeText
             typeText.setText(text[position]);
+            //Wait for one second before checking whether the button is pressed because
+            //if there is no delay, a depressed button will cause this loop to completely
+            //run through with the only visual indication being immediately reaching the
+            //last string in the text array
             yield return new WaitForSeconds(1);
             yield return StartCoroutine("IsButtonPressed");
             position++;
@@ -72,6 +88,11 @@ public class Tutorial : MonoBehaviour {
 
     }
 
+    /*
+     * Coroutine that only stops looping if the GearVR trigger
+     * is depressed and the player isn't touching the GearVR
+     * touchpad (due to the dual use of the trigger as the sprint button)
+     */
     IEnumerator IsButtonPressed()
     {
         do
@@ -80,6 +101,11 @@ public class Tutorial : MonoBehaviour {
         } while (!(OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) && !OVRInput.Get(OVRInput.Touch.PrimaryTouchpad)));
     }
 
+    /*
+     * Specifically for when the player collides with the tutorial treasure; the treasure
+     * is deactivated, resulting in the player "collecting" it, and confirmation text
+     * on the treasureText object is set.
+     */
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
         if(hit.gameObject.tag == "snowPiece")
