@@ -48,7 +48,7 @@ public class ProjectionOntoLine : MonoBehaviour {
         float t = (-l * x1 - m * y1 - n * z1 - d) / (Mathf.Pow(l, 2) + Mathf.Pow(m, 2) + Mathf.Pow(n, 2));
         float x = l * t + x1; float y = m * t + y1; float z = n * t + z1;
         Vector3 temp1 = point1.position; Vector3 temp2 = point2.position;
-        Debug.unityLogger.Log("ABC", varyingPoint.position.x + " " + varyingPoint.position.z);
+        //Debug.unityLogger.Log("ABC", varyingPoint.position.x + " " + varyingPoint.position.z);
         if (x > Mathf.Min(temp1.x, temp2.x) && z > Mathf.Min(temp1.z, temp2.z) && x < Mathf.Max(temp1.x, temp2.x) && z < Mathf.Max(temp1.z, temp2.z))
         {
             Vector3 middle = new Vector3(x, y, z);

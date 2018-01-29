@@ -7,7 +7,7 @@ namespace DigitalRuby.RainMaker
     public class RainScript : BaseRainScript
     {
 
-		public static bool isSnowFalling = false;
+		public static bool isSnowFalling = true;
 
 
 

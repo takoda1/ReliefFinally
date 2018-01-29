@@ -8,13 +8,21 @@ using UnityEngine;
  * 1/26/2018
  * Description: Attached to any object that is to linearly
  * move between any number of fixed positions.
+ * It will go to all of the positions provided then loop to
+ * the first one when all have been reached.
+ * Orientation is updated accordingly. Make sure to attach to gameobject whose
+ * "front" is oriented facing +z. If a model's default front-facing
+ * orientation is not +z, enclose it in another gameobject, change
+ * the model's transform to have its "front" oriented with +z, and
+ * attach this script to the enclosing gameobject.
+ * 
  */
 public class MoveToPosition : MonoBehaviour {
 
-    public Transform[] targetPositions;
+    public Transform[] targetPositions; //positions to move to
     public float speed;
-    public float changeTargetDistance;
-    public bool changeOrientationOnChangedTarget;
+    public float changeTargetDistance; //distance at which a target is considered as reached
+    public bool changeOrientationOnChangedTarget; //whether the object is to rotate toward its destination
     private int counter = 0;
 
     private void FixedUpdate()
@@ -27,8 +35,8 @@ public class MoveToPosition : MonoBehaviour {
             Vector3 pos = Vector3.MoveTowards(transform.position, targetPositions[counter].position, speed * Time.deltaTime);
             if (changeOrientationOnChangedTarget)
             {
-                Vector3 newDir = Vector3.RotateTowards(transform.position, targetPositions[counter].position, 15, 15);
-                Debug.DrawRay(transform.position, newDir, Color.red, 1);
+                Vector3 newDir = targetPositions[counter].position - transform.position;
+                //Debug.DrawRay(transform.position, newDir, Color.red, 1);
                 this.transform.rotation = Quaternion.LookRotation(newDir);
             }
             this.transform.position = pos;

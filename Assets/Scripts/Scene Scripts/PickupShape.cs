@@ -4,14 +4,80 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Timers;
 
+/*
+ * Created by: Morgan Howell (probably)
+ * Modified by: Takoda Ren
+ * 
+ * Placed on a player who picks up objects, which is then updated in the
+ * data class accrodingly.
+ */
 public class PickupShape : MonoBehaviour {
 	
 	public Text piecePickupProgress;
 
-	void Start () {
+    public string SNOWY_PIECE_RETRIEVED;
+    public string BARNACLE_PIECE_RETRIEVED;
+    public string SNOWY_ALL_PIECES_RETRIEVED;
+    public string BARNACLE_ALL_PIECES_RETRIEVED;
+
+    void Start()
+    {
+        SNOWY_PIECE_RETRIEVED = "Winter coat piece retrieved! {0} of " + ReliefStats.instance.SNOWY_MAX_COLLECT.ToString();
+        BARNACLE_PIECE_RETRIEVED = "Scuba gear piece retrieved! {0} of " + ReliefStats.instance.BARNACLE_MAX_COLLECT.ToString();
+        SNOWY_ALL_PIECES_RETRIEVED = "Congratulations! You have collected all pieces of the winter coat. You can access Frigid Cliff.";
+        BARNACLE_ALL_PIECES_RETRIEVED = "Congratulations! You have collected all pieces of the scuba gear. You can access Barnacle Waters.";
+    }
+
+	void OnControllerColliderHit(ControllerColliderHit hit) {
+		UpdatePieceProgress (hit.gameObject.tag, hit.gameObject);
 	}
 
-	void showPiecePickupProgress(string pieceType, GameObject piece) {
+    void UpdatePieceProgress(string pieceTag, GameObject piece)
+    {
+        switch (pieceTag)
+        {
+            case "snowyPiece":
+                deactivatePiece(piece);
+                ReliefStats.instance.IncrementSnowyPiece();
+                if (ReliefStats.instance.HasAccessToSnowy())
+                {
+                    piecePickupProgress.text = SNOWY_ALL_PIECES_RETRIEVED;
+                }
+                else
+                {
+                    piecePickupProgress.text = string.Format(SNOWY_PIECE_RETRIEVED, ReliefStats.instance.SnowyPiecesCollected());
+                }
+                StartCoroutine(eraseCurrentStatus());
+                break;
+            case "barnaclePiece":
+                deactivatePiece(piece);
+                ReliefStats.instance.IncrementBarnaclePiece();
+                if (ReliefStats.instance.HasAccessToBarnacle())
+                {
+                    piecePickupProgress.text = BARNACLE_ALL_PIECES_RETRIEVED;
+                }
+                else
+                {
+                    piecePickupProgress.text = string.Format(BARNACLE_PIECE_RETRIEVED, ReliefStats.instance.BarnaclePiecesCollected());
+                }
+                StartCoroutine(eraseCurrentStatus());
+                break;
+        }
+    }
+
+    IEnumerator eraseCurrentStatus()
+    {
+        yield return new WaitForSeconds(2);
+        piecePickupProgress.text = "";
+    }
+
+    private void deactivatePiece(GameObject piece)
+    {
+        piece.SetActive(false);
+    }
+
+
+    /*void showPiecePickupProgress(string pieceType, GameObject piece) {
 		switch (pieceType) {
 
 		case "snowPiece":
@@ -25,11 +91,6 @@ public class PickupShape : MonoBehaviour {
 			break;
 		}
 			
-	}
-		
-	IEnumerator eraseCurrentStatus() {
-		yield return new WaitForSeconds (2);
-		piecePickupProgress.text = "";
 	}
 		
 	void updateProgressWinterCoat(int id){
@@ -58,8 +119,6 @@ public class PickupShape : MonoBehaviour {
 			}
 
 		}
-
-
 		if (ReliefStats.instance.currentBarnacleProgress < ReliefStats.instance.BARNACLE_MAX_COLLECT) {
 			piecePickupProgress.text = System.String.Format(ReliefStats.instance.BARNACLE_PIECE_RETRIEVED, ReliefStats.instance.currentBarnacleProgress) ;
 			
@@ -98,9 +157,5 @@ public class PickupShape : MonoBehaviour {
 		//int.TryParse(name, out idInt);
 		idInt = System.Int32.Parse(id);
 		return idInt;
-	}
-
-	void OnControllerColliderHit(ControllerColliderHit hit) {
-		showPiecePickupProgress (hit.gameObject.tag, hit.gameObject);
-	}
+	}*/
 }

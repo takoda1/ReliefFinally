@@ -3,6 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+/*
+ * Created by: Takoda Ren
+ * 
+ * Causes an object to run in a linear path and to match a player's movements
+ * if the player is moving toward it within a fixed radius (runAwayDistance)
+ * Used to be script for Tiger behavior, now unused/obsolete.
+ */
+
 public class PlainsTigerRun : MonoBehaviour {
 
     public float runAwayDistance;
