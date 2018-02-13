@@ -15,8 +15,8 @@ using UnityEngine.VR;
 public class ReliefStats : MonoBehaviour {
 
     //Static modifiers for pieces
-    private static int snowyPieces = 0;
-    private static int barnaclePieces = 0;
+    private static int snowyPieces = 5;
+    private static int barnaclePieces = 7;
 
     //Used to hold data across scenes
     public static ReliefStats instance = null;

@@ -27,7 +27,6 @@ public class TerrainAccessor : MonoBehaviour {
     // Use this for initialization
     void Start () {
 		accessUpdate.text = "";
-
         NO_ACCESS_SNOWY = "You have {0} winter coat pieces left before you can access Frigid Cliff.";
         NO_ACCESS_BARNACLE = "You have {0} scuba gear pieces left before you can access Barnacle Waters.";
         ACCESS_SNOWY = "Access Granted! You are using your snow coat to access Frigid Cliff...";

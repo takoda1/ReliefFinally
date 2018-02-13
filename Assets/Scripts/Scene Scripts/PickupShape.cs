@@ -67,7 +67,7 @@ public class PickupShape : MonoBehaviour {
 
     IEnumerator eraseCurrentStatus()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(4);
         piecePickupProgress.text = "";
     }
 

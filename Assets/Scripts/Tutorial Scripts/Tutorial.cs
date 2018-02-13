@@ -22,7 +22,8 @@ public class Tutorial : MonoBehaviour {
 
     private TypeText typeText;
 
-    private Text treasureText; 
+    private Text treasureText;
+    private bool usingGearVrRemote;
 
     // Use this for initialization
     void Start () {
@@ -37,6 +38,12 @@ public class Tutorial : MonoBehaviour {
          */
         GameObject temp = GameObject.FindGameObjectWithTag("Treasure Text");
         treasureText = temp.GetComponentInChildren<Text>();
+
+        if (OVRInput.GetActiveController() == OVRInput.Controller.LTrackedRemote ||
+           OVRInput.GetActiveController() == OVRInput.Controller.RTrackedRemote)
+            usingGearVrRemote = true;
+        else
+            usingGearVrRemote = false;
     }
 
     //OVRInput needs to be updated to update whether the GearVR trigger is being pressed or not
@@ -89,16 +96,31 @@ public class Tutorial : MonoBehaviour {
     }
 
     /*
-     * Coroutine that only stops looping if the GearVR trigger
+     * Coroutine that only stops looping if:
+     * when using GearVR remote:
+     * GearVR trigger
      * is depressed and the player isn't touching the GearVR
      * touchpad (due to the dual use of the trigger as the sprint button)
+     * when using stratus xl remote:
+     * button A (maps to button 0) is depressed
      */
     IEnumerator IsButtonPressed()
     {
-        do
+        if (usingGearVrRemote)
         {
-            yield return null;
-        } while (!(OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) && !OVRInput.Get(OVRInput.Touch.PrimaryTouchpad)));
+            do
+            {
+                yield return null;
+            } while (!(OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) && !OVRInput.Get(OVRInput.Touch.PrimaryTouchpad)));
+        }
+        else
+        //stratus xl controller
+        {
+            do
+            {
+                yield return null;
+            } while (!Input.GetButtonDown("Button 0"));
+        }
     }
 
     /*

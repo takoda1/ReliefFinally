@@ -20,7 +20,6 @@ limitations under the License.
 ************************************************************************************/
 
 using UnityEngine;
-using System.Collections.Generic;
 
 /// <summary>
 /// Controls the player's movement in virtual reality.
@@ -28,68 +27,64 @@ using System.Collections.Generic;
 [RequireComponent(typeof(CharacterController))]
 public class OVRPlayerController : MonoBehaviour
 {
-	/// <summary>
-	/// The rate acceleration during movement.
-	/// </summary>
-	public float Acceleration = 0.1f;
+    /// <summary>
+    /// The rate acceleration during movement.
+    /// </summary>
+    public float Acceleration = 0.1f;
 
-	/// <summary>
-	/// The rate of damping on movement.
-	/// </summary>
-	public float Damping = 0.3f;
+    /// <summary>
+    /// The rate of damping on movement.
+    /// </summary>
+    public float Damping = 0.3f;
 
-	/// <summary>
-	/// The rate of additional damping when moving sideways or backwards.
-	/// </summary>
-	public float BackAndSideDampen = 0.5f;
+    /// <summary>
+    /// The rate of additional damping when moving sideways or backwards.
+    /// </summary>
+    public float BackAndSideDampen = 0.5f;
 
-	/// <summary>
-	/// The force applied to the character when jumping.
-	/// </summary>
-	public float JumpForce = 0.3f;
+    /// <summary>
+    /// The force applied to the character when jumping.
+    /// </summary>
+    public float JumpForce = 0.3f;
 
-	/// <summary>
-	/// The rate of rotation when using a gamepad.
-	/// </summary>
-	public float RotationAmount = 1.5f;
+    /// <summary>
+    /// The rate of rotation when using a gamepad.
+    /// </summary>
+    public float RotationAmount = 1.5f;
 
-	/// <summary>
-	/// The rate of rotation when using the keyboard.
-	/// </summary>
-	public float RotationRatchet = 45.0f;
+    /// <summary>
+    /// The rate of rotation when using the keyboard.
+    /// </summary>
+    public float RotationRatchet = 45.0f;
 
-	/// <summary>
-	/// If true, reset the initial yaw of the player controller when the Hmd pose is recentered.
-	/// </summary>
-	public bool HmdResetsY = true;
+    /// <summary>
+    /// If true, reset the initial yaw of the player controller when the Hmd pose is recentered.
+    /// </summary>
+    public bool HmdResetsY = true;
 
-	/// <summary>
-	/// If true, tracking data from a child OVRCameraRig will update the direction of movement.
-	/// </summary>
-	public bool HmdRotatesY = true;
+    /// <summary>
+    /// If true, tracking data from a child OVRCameraRig will update the direction of movement.
+    /// </summary>
+    public bool HmdRotatesY = true;
 
-	/// <summary>
-	/// Modifies the strength of gravity.
-	/// </summary>
-	public float GravityModifier = 0.379f;
-	
-	/// <summary>
-	/// If true, each OVRPlayerController will use the player's physical height.
-	/// </summary>
-	public bool useProfileData = false;
+    /// <summary>
+    /// Modifies the strength of gravity.
+    /// </summary>
+    public float GravityModifier = 0.379f;
 
-    //Game specific variables
-    private AudioSource footstepAudioSource;
-    private bool isMoving = false;
+    /// <summary>
+    /// If true, each OVRPlayerController will use the player's physical height.
+    /// </summary>
+    public bool useProfileData = false;
 
     protected CharacterController Controller = null;
-	protected OVRCameraRig CameraRig = null;
+    protected OVRCameraRig CameraRig = null;
 
-	private float MoveScale = .5f;
-	private Vector3 MoveThrottle = Vector3.zero;
-	private float FallSpeed = 0.0f;
-	private OVRPose? InitialPose;
-	private float InitialYRotation = 0.0f;
+    private float MoveScale = 1.0f;
+    private Vector3 MoveThrottle = Vector3.zero;
+    private float FallSpeed = 0.0f;
+    private OVRPose? InitialPose;
+    public float InitialYRotation = 0.0f;
 	private float MoveScaleMultiplier = 1.0f;
 	private float RotationScaleMultiplier = 1.0f;
 	private bool  SkipMouseRotation = false;
@@ -99,13 +94,12 @@ public class OVRPlayerController : MonoBehaviour
 	private float SimulationRate = 60f;
 	private float buttonRotation = 0f;
 
-	void Start()
+	virtual public void Start()
 	{
 		// Add eye-depth as a camera offset from the player controller
 		var p = CameraRig.transform.localPosition;
 		p.z = OVRManager.profile.eyeDepth;
 		CameraRig.transform.localPosition = p;
-        footstepAudioSource = GetComponent<AudioSource>();
     }
 
 	void Awake()
@@ -149,36 +143,20 @@ public class OVRPlayerController : MonoBehaviour
 		}
 	}
 
-	void Update()
+	virtual public void Update()
 	{
-        OVRInput.Update();
-		//Use keys to ratchet rotation
-		if (Input.GetKeyDown(KeyCode.Q))
+        //Use keys to ratchet rotation
+#if UNITY_EDITOR || UNITY_STANDALONE_WIN
+        if (Input.GetKeyDown(KeyCode.Q))
 			buttonRotation -= RotationRatchet;
 
 		if (Input.GetKeyDown(KeyCode.E))
 			buttonRotation += RotationRatchet;
-
-        if (OVRInput.Get(OVRInput.Button.PrimaryTouchpad))
-        {
-            Vector2 pressPosition = OVRInput.Get(OVRInput.Axis2D.PrimaryTouchpad);
-            if (pressPosition.y < .5 && pressPosition.y > -.5)
-            {
-                if (pressPosition.x < -.3)
-                {
-                    buttonRotation -= RotationRatchet;
-                }
-                if (pressPosition.x > .3)
-                {
-                    buttonRotation += RotationRatchet;
-                }
-            }
-        }
+#endif
     }
 
 	protected virtual void UpdateController()
 	{
-        
 		if (useProfileData)
 		{
 			if (InitialPose == null)
@@ -251,64 +229,66 @@ public class OVRPlayerController : MonoBehaviour
 			MoveThrottle += (actualXZ - predictedXZ) / (SimulationRate * Time.deltaTime);
 	}
 
-	public virtual void UpdateMovement()
+	public void UpdateMovement()
 	{
-        OVRInput.Update();
         if (HaltUpdateMovement)
 			return;
 
-        /*if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger))
-        {
-            Jump();
-        }*/
-
-		bool moveForward = Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow);
+        bool moveForward = Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow);
 		bool moveLeft = Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow);
 		bool moveRight = Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow);
 		bool moveBack = Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow);
 
-		bool dpad_move = false;
+        MoveScale = 1.0f;
+
+
+#if UNITY_ANDROID && !UNITY_EDITOR
+        //if the gearVR controller is being used
         if (OVRInput.GetActiveController() == OVRInput.Controller.LTrackedRemote ||
             OVRInput.GetActiveController() == OVRInput.Controller.RTrackedRemote)
         {
             if (OVRInput.Get(OVRInput.Touch.PrimaryTouchpad) && !OVRInput.Get(OVRInput.Button.PrimaryTouchpad))
             {
                 Vector2 touchPosition = OVRInput.Get(OVRInput.Axis2D.PrimaryTouchpad);
-                if(touchPosition.y > .3)
-                {
+                if (touchPosition.y > 0)
                     moveForward = true;
-                    dpad_move = true;
-                }
-
-                if (touchPosition.y < -.3)
-                {
+                if (touchPosition.y < 0)
                     moveBack = true;
-                    dpad_move = true;
-                }
-                isMoving = true;
+                if (touchPosition.x > 0)
+                    moveRight = true;
+                if (touchPosition.x < 0)
+                    moveLeft = true;
             }
-            else
+
+            if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger))
             {
-                isMoving = false;
+                MoveScale *= 2.0f;
             }
-            UpdateFootstepAudio();
         }
-        /*if (OVRInput.Get(OVRInput.Button.DpadUp))
-		{
-			moveForward = true;
-			dpad_move   = true;
+        
+        if(Input.GetButton("Button 0")) //button 0 maps to A on the controller
+        {
+            MoveScale *= 2.0f;
+        }
+        //if using gearVR controller
+        if (OVRInput.Get(OVRInput.Button.PrimaryTouchpad))
+        {
+            Vector2 pressPosition = OVRInput.Get(OVRInput.Axis2D.PrimaryTouchpad);
+            if (pressPosition.y < .5 && pressPosition.y > -.5)
+            {
+                if (pressPosition.x < -.3)
+                {
+                    buttonRotation -= RotationRatchet;
+                }
+                if (pressPosition.x > .3)
+                {
+                    buttonRotation += RotationRatchet;
+                }
+            }
+        }
+#endif
 
-		}
-
-		if (OVRInput.Get(OVRInput.Button.DpadDown))
-		{
-			moveBack  = true;
-			dpad_move = true;
-		}*/
-
-        MoveScale = 1.0f;
-
-		if ( (moveForward && moveLeft) || (moveForward && moveRight) ||
+        if ( (moveForward && moveLeft) || (moveForward && moveRight) ||
 			 (moveBack && moveLeft)    || (moveBack && moveRight) )
 			MoveScale = 0.70710678f;
 
@@ -318,16 +298,11 @@ public class OVRPlayerController : MonoBehaviour
 
 		MoveScale *= SimulationRate * Time.deltaTime;
 
-        if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger))
-        {
-            MoveScale *= 2.0f;
-        }
-
 		// Compute this for key movement
 		float moveInfluence = Acceleration * 0.1f * MoveScale * MoveScaleMultiplier;
 
 		// Run!
-		if (dpad_move || Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+		if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
 			moveInfluence *= 2.0f;
 
 		Quaternion ort = transform.rotation;
@@ -365,12 +340,16 @@ public class OVRPlayerController : MonoBehaviour
 
 		float rotateInfluence = SimulationRate * Time.deltaTime * RotationAmount * RotationScaleMultiplier;
 
-#if !UNITY_ANDROID || UNITY_EDITOR
-		if (!SkipMouseRotation)
-			euler.y += Input.GetAxis("Mouse X") * rotateInfluence * 3.25f;
+//for testing purposes, remove later
+#if UNITY_EDITOR
+        if (!SkipMouseRotation)
+        {
+            euler.y += Input.GetAxis("Mouse X") * rotateInfluence * 3.25f;
+            euler.x += Input.GetAxis("Mouse Y") * rotateInfluence * -3.25f;
+        }
 #endif
 
-		moveInfluence = Acceleration * 0.1f * MoveScale * MoveScaleMultiplier;
+        moveInfluence = Acceleration * 0.1f * MoveScale * MoveScaleMultiplier;
 
 #if !UNITY_ANDROID // LeftTrigger not avail on Android game pad
 		moveInfluence *= 1.0f + OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger);
@@ -441,38 +420,6 @@ public class OVRPlayerController : MonoBehaviour
 		MoveThrottle = Vector3.zero;
 		FallSpeed = 0.0f;
 	}
-
-    #region Game specific methods
-    
-    private void UpdateFootstepAudio()
-    {
-        if (!Controller.isGrounded)
-        {
-            return;
-        }
-        if(isMoving && footstepAudioSource.isPlaying)
-        {
-            return;
-        }
-        else if(isMoving && !footstepAudioSource.isPlaying)
-        {
-            footstepAudioSource.Play();
-        }
-        else if(!isMoving && footstepAudioSource.isPlaying)
-        {
-            footstepAudioSource.Stop();
-        }
-        // pick & play a random footstep sound from the array,
-        // excluding sound at index 0
-        //int n = Random.Range(1, footstepSounds.Length);
-        //audioSource.clip = footstepSound;
-        //audioSource.Play();
-        //audioSource.PlayOneShot(audioSource.clip);
-        // move picked sound to index 0 so it's not picked next time
-        //footstepSounds[n] = footstepSounds[0];
-        //footstepSounds[0] = audioSource.clip;
-    }
-    #endregion
 
     /// <summary>
     /// Gets the move scale multiplier.

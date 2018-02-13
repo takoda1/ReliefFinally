@@ -72,16 +72,34 @@ public class MenuEyeRaycaster : MonoBehaviour {
 
     private void HandleInput()
     {
-        //If there is a remote
+/*#if UNITY_EDITOR || UNITY_STANDALONE_WIN
+        if (Input.GetButton("Space"))
+        {
+            if (currentInteractible != null)
+                currentInteractible.Click();
+        }
+#endif*/
+//#if UNITY_ANDROID && !UNITY_EDITOR
+        //if gearVR remote
         if(OVRInput.GetActiveController() == OVRInput.Controller.LTrackedRemote ||
            OVRInput.GetActiveController() == OVRInput.Controller.RTrackedRemote)
         {
             //If the trigger is pressed when hovering over an interactive object, call Click
-            if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger))
+            if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger))
             {
                 if (currentInteractible != null)
                     currentInteractible.Click();
             }
         }
+        //assume stratus xl remote otherwise
+        else
+        {
+            if(Input.GetButtonDown("Button 0")) //maps to button A on controller
+            {
+                if (currentInteractible != null)
+                    currentInteractible.Click();
+            }
+        }
+//#endif
     }
 }

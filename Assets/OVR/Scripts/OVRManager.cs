@@ -709,14 +709,14 @@ public class OVRManager : MonoBehaviour
 		// Disable the occlusion mesh by default until open issues with the preview window are resolved.
 		OVRPlugin.occlusionMesh = false;
 
-#if UNITY_EDITOR
+/*#if UNITY_EDITOR
 		EditorApplication.playModeStateChanged += LogPlayModeState;
-#endif
+#endif*/
 	}
-    private static void LogPlayModeState(PlayModeStateChange state)
+    /*private static void LogPlayModeState(PlayModeStateChange state)
     {
         Debug.Log(state);
-    }
+    }*/
 
 #if UNITY_EDITOR
 	private static bool _scriptsReloaded;
