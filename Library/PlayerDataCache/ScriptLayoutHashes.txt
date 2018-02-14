@@ -1,6 +1,8 @@
 Android
 SceneListBegin?
+Assets/MainMenuScene.unity
 Assets/TutorialScene.unity
+Assets/InfoScene.unity
 SceneListEnd?
 7ba1e84ad3d2d8813486668e75f842ce Assembly-CSharp-firstpass.dll:UnityStandardAssets.Effects.ExtinguishableParticleSystem
 7df47d262399a6f845c2ed06b92cba9b Assembly-CSharp.dll:.OVRCameraRig

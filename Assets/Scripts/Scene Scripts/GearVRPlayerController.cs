@@ -20,9 +20,16 @@ public class GearVRPlayerController : OVRPlayerController {
 	override public void Update () {
         base.Update();
         if(OVRInput.Get(OVRInput.Touch.PrimaryTouchpad) && !OVRInput.Get(OVRInput.Button.PrimaryTouchpad) ||
-           OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick).y != 0){
+           OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick).y != 0
+           ){
             isMoving = true;
         }
+#if UNITY_EDITOR
+        else if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.S))
+        {
+            isMoving = true;
+        }
+#endif
         else
         {
             isMoving = false;

@@ -266,7 +266,7 @@ public class OVRPlayerController : MonoBehaviour
             }
         }
         
-        if(Input.GetButton("Button 4")) //button 0 maps to A on the controller
+        if(Input.GetButton("Button 4")) //button 4 maps to the left bumper on the controller
         {
             MoveScale *= 2.0f;
         }
