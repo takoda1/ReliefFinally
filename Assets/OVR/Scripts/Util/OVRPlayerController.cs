@@ -266,7 +266,7 @@ public class OVRPlayerController : MonoBehaviour
             }
         }
         
-        if(Input.GetButton("Button 0")) //button 0 maps to A on the controller
+        if(Input.GetButton("Button 4")) //button 0 maps to A on the controller
         {
             MoveScale *= 2.0f;
         }
@@ -321,7 +321,7 @@ public class OVRPlayerController : MonoBehaviour
 
 		Vector3 euler = transform.rotation.eulerAngles;
 
-		bool curHatLeft = OVRInput.Get(OVRInput.Button.PrimaryShoulder);
+		/*bool curHatLeft = OVRInput.Get(OVRInput.Button.PrimaryShoulder);
 
 		if (curHatLeft && !prevHatLeft)
 			euler.y -= RotationRatchet;
@@ -333,7 +333,7 @@ public class OVRPlayerController : MonoBehaviour
 		if(curHatRight && !prevHatRight)
 			euler.y += RotationRatchet;
 
-		prevHatRight = curHatRight;
+		prevHatRight = curHatRight;*/
 
 		euler.y += buttonRotation;
 		buttonRotation = 0f;
