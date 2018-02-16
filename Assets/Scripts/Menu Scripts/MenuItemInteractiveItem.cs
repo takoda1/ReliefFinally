@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 /*
@@ -68,6 +69,8 @@ public class MenuItemInteractiveItem : MonoBehaviour {
     //If the player clicks, we want to load the scene they are looking at.
     private void HandleClick()
     {
+        Text alert = GetComponentInChildren<Text>();
+        alert.text = "Loading";
         SceneManager.LoadScene(Scene, LoadSceneMode.Single);
     }
 }
