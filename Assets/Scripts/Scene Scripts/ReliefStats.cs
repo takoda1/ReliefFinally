@@ -17,6 +17,7 @@ public class ReliefStats : MonoBehaviour {
     //Static modifiers for pieces
     private static int snowyPieces = 5;
     private static int barnaclePieces = 7;
+    private static int newPieces = 9;
 
     //Used to hold data across scenes
     public static ReliefStats instance = null;
@@ -24,8 +25,10 @@ public class ReliefStats : MonoBehaviour {
     //global statistics for game progress
     public int SNOWY_MAX_COLLECT;
     public int BARNACLE_MAX_COLLECT;
+    public int NEW_MAX_COLLECT;
     public int currentSnowyProgress;
     public int currentBarnacleProgress;
+    public int currentNewProgress;
 
 
     //global strings for UI text displays
@@ -42,8 +45,10 @@ public class ReliefStats : MonoBehaviour {
         UnityEngine.XR.XRSettings.enabled = true;
         SNOWY_MAX_COLLECT = snowyPieces;
         BARNACLE_MAX_COLLECT = barnaclePieces;
+        NEW_MAX_COLLECT = newPieces;
         currentSnowyProgress = 0;
         currentBarnacleProgress = 0;
+        currentNewProgress = 0;
 
         DontDestroyOnLoad(instance);
     }
@@ -77,5 +82,20 @@ public class ReliefStats : MonoBehaviour {
     public bool HasAccessToBarnacle()
     {
         return currentBarnacleProgress >= BARNACLE_MAX_COLLECT;
+    }
+
+    public void IncrementNewPiece()
+    {
+        currentNewProgress++;
+    }
+
+    public int NewPiecesCollected()
+    {
+        return currentNewProgress;
+    }
+
+    public bool HasAccessToNew()
+    {
+        return currentNewProgress >= NEW_MAX_COLLECT;
     }
 }

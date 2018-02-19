@@ -19,13 +19,18 @@ public class PickupShape : MonoBehaviour {
     public string BARNACLE_PIECE_RETRIEVED;
     public string SNOWY_ALL_PIECES_RETRIEVED;
     public string BARNACLE_ALL_PIECES_RETRIEVED;
+    public string NEW_PIECE_RETRIEVED;
+    public string NEW_ALL_PIECES_RETRIEVED;
 
     void Start()
     {
         SNOWY_PIECE_RETRIEVED = "Winter coat piece retrieved! {0} of " + ReliefStats.instance.SNOWY_MAX_COLLECT.ToString();
         BARNACLE_PIECE_RETRIEVED = "Scuba gear piece retrieved! {0} of " + ReliefStats.instance.BARNACLE_MAX_COLLECT.ToString();
+        NEW_PIECE_RETRIEVED = "Mystical piece retrieved ! {0} of " + ReliefStats.instance.NEW_MAX_COLLECT.ToString();
         SNOWY_ALL_PIECES_RETRIEVED = "Congratulations! You have collected all pieces of the winter coat. You can access Frigid Cliff.";
         BARNACLE_ALL_PIECES_RETRIEVED = "Congratulations! You have collected all pieces of the scuba gear. You can access Barnacle Waters.";
+        NEW_ALL_PIECES_RETRIEVED = "Congratulations! You have collected all mystical pieces.";
+
     }
 
 	void OnControllerColliderHit(ControllerColliderHit hit) {
@@ -59,6 +64,19 @@ public class PickupShape : MonoBehaviour {
                 else
                 {
                     piecePickupProgress.text = string.Format(BARNACLE_PIECE_RETRIEVED, ReliefStats.instance.BarnaclePiecesCollected());
+                }
+                StartCoroutine(eraseCurrentStatus());
+                break;
+            case "newPiece":
+                deactivatePiece(piece);
+                ReliefStats.instance.IncrementNewPiece();
+                if (ReliefStats.instance.HasAccessToNew())
+                {
+                    piecePickupProgress.text = NEW_ALL_PIECES_RETRIEVED;
+                }
+                else
+                {
+                    piecePickupProgress.text = string.Format(NEW_PIECE_RETRIEVED, ReliefStats.instance.NewPiecesCollected());
                 }
                 StartCoroutine(eraseCurrentStatus());
                 break;

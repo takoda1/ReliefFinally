@@ -17,7 +17,7 @@ using UnityEngine;
 public class MenuEyeRaycaster : MonoBehaviour {
     //raycaster script that must be attached to camera
     private InteractiveItem currentInteractible { get; set; } //current InteractiveItem
-    private InteractiveItem lastInteractible { get; set; } //Previous InteractiveItem
+    private InteractiveItem previousInteractible { get; set; } //Previous InteractiveItem
 	
 	// Update is called once per frame
 	void Update () {
@@ -32,7 +32,7 @@ public class MenuEyeRaycaster : MonoBehaviour {
         Ray ray = new Ray(this.transform.position, this.transform.forward);
         RaycastHit hit;
 
-        //See if ray hits an interactive object
+        //See if ray hits an object
         if(Physics.Raycast(ray, out hit))
         { 
             //if it has, set it as the current InteractiveItem
@@ -40,14 +40,14 @@ public class MenuEyeRaycaster : MonoBehaviour {
 
             //If the interactive object called is not the same as the last item, call over
             //representing when the player first looks over an object
-            if(currentInteractible != null && currentInteractible != lastInteractible)
+            if(currentInteractible != null && currentInteractible != previousInteractible)
                 currentInteractible.Over();
 
-            //Deactivate last interactive item if it isn't the same as the current item
-            if (currentInteractible != lastInteractible)
-                DeactivateLastInteractible();
+            //Deactivate last interactive item if it isn't the same as the current item or if 
+            if (currentInteractible != previousInteractible)
+                DeactivatePreviousInteractible();
 
-            lastInteractible = currentInteractible;
+            previousInteractible = currentInteractible;
             
 
 
@@ -55,31 +55,24 @@ public class MenuEyeRaycaster : MonoBehaviour {
         else
         {
             //Nothing is hit, so deactive last interactive item and current interactive item
-            DeactivateLastInteractible();
+            DeactivatePreviousInteractible();
             currentInteractible = null;
         }
     }
 
 
-    private void DeactivateLastInteractible()
+    private void DeactivatePreviousInteractible()
     {
-        if (lastInteractible == null)
+        if (previousInteractible == null)
             return;
 
-        lastInteractible.Out();
-        lastInteractible = null;
+        previousInteractible.Out();
+        previousInteractible = null;
     }
 
     private void HandleInput()
     {
-/*#if UNITY_EDITOR || UNITY_STANDALONE_WIN
-        if (Input.GetButton("Space"))
-        {
-            if (currentInteractible != null)
-                currentInteractible.Click();
-        }
-#endif*/
-//#if UNITY_ANDROID && !UNITY_EDITOR
+#if UNITY_ANDROID && !UNITY_EDITOR
         //if gearVR remote
         if(OVRInput.GetActiveController() == OVRInput.Controller.LTrackedRemote ||
            OVRInput.GetActiveController() == OVRInput.Controller.RTrackedRemote)
@@ -100,6 +93,6 @@ public class MenuEyeRaycaster : MonoBehaviour {
                     currentInteractible.Click();
             }
         }
-//#endif
+#endif
     }
 }

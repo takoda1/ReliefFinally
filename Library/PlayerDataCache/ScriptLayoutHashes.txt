@@ -172,7 +172,7 @@ cfa93710d56cd4da2a3b2eec27bc1139 Assembly-CSharp-firstpass.dll:UnityStandardAsse
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Advertisements.dll:UnityEngine.Advertisements.Editor.Placeholder
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp-firstpass.dll:UnityStandardAssets.Water.Displace
 d8dc50f247b72592cd9c5fec1a53397c Assembly-CSharp.dll:.SardineBoidScript
-b00361b01f61bf17517e2c554263e9d9 Assembly-CSharp.dll:.ReliefStats
+064326df7ada2ce651051051e05079a8 Assembly-CSharp.dll:.ReliefStats
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp-firstpass.dll:UnityStandardAssets.CrossPlatformInput.MobileControlRig
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.ObjectResetter
 e97ff9540a49b92b779792c195839d33 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Effects.AfterburnerPhysicsForce
@@ -248,6 +248,7 @@ bcfc20d487bd118a9c10b5e5edd279cb Assembly-CSharp.dll:DigitalRuby.RainMaker.DemoS
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.FPSCounter
 27762c22fdff745993d0e9ecf604fd04 Assembly-CSharp.dll:.StratusXLControllerTest
 0a6c82061bcda3c3322ce3bba26fd9b5 Assembly-CSharp.dll:DigitalRuby.RainMaker.DemoScript2D
-9d68df843a95d34f982c4589a616ca0a Assembly-CSharp.dll:.PickupShape
-2d23e2c981748950f623341842d051ca Assembly-CSharp.dll:.MenuItemInteractiveItem
+3b683737a9fec1ed707b75e2040ae228 Assembly-CSharp.dll:.PickupShape
+661d33336607a0bd9dd3964acc8c1c07 Assembly-CSharp.dll:.MenuItemInteractiveItem
 0f3d4bb7128a287827d041c696039525 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.AutoMobileShaderSwitch
+661d33336607a0bd9dd3964acc8c1c07 Assembly-CSharp.dll:.Test

@@ -14,15 +14,11 @@ using UnityEngine.SceneManagement;
  * to move toward the main camera (but only in the +-X and Z directions)
  * when the main camera looks at the menu item.
  */
-public class MenuItemInteractiveItem : MonoBehaviour {
+public class MenuItemInteractiveItem : InteractiveItem {
 
-    //distance the menu quad is to move forward or backward
     private float moveDistance = .5f;
     private GameObject mainCamera;
     private Vector3 moveDirection;
-
-    //interactiveItem that is provided with customized actions
-    [SerializeField] private InteractiveItem interactiveItem;
 
     //Scene that this MenuItem is to load
     public string Scene;
@@ -42,16 +38,16 @@ public class MenuItemInteractiveItem : MonoBehaviour {
     //actions to the interactiveItem object.
     private void OnEnable()
     {
-        interactiveItem.OnOver += HandleOver;
-        interactiveItem.OnOut += HandleOut;
-        interactiveItem.OnClick += HandleClick;
+        OnOver += HandleOver;
+        OnOut += HandleOut;
+        OnClick += HandleClick;
     }
 
     private void OnDisable()
     {
-        interactiveItem.OnOver -= HandleOver;
-        interactiveItem.OnOut -= HandleOut;
-        interactiveItem.OnClick -= HandleClick;
+        OnOver -= HandleOver;
+        OnOut -= HandleOut;
+        OnClick -= HandleClick;
     }
 
     //Whenever a menu object is looked over, it will move forward by a distance defined by moveDistance
