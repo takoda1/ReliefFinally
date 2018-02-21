@@ -101,7 +101,7 @@ public class Tutorial : MonoBehaviour {
      * GearVR trigger
      * is depressed and the player isn't touching the GearVR
      * touchpad (due to the dual use of the trigger as the sprint button)
-     * when using stratus xl remote:
+     * when using StratusXL remote:
      * button A (maps to button 0) is depressed
      */
     IEnumerator IsButtonPressed()

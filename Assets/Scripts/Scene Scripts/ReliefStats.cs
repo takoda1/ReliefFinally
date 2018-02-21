@@ -14,27 +14,16 @@ using UnityEngine.VR;
 
 public class ReliefStats : MonoBehaviour {
 
-    //Static modifiers for pieces
-    private static int snowyPieces = 5;
-    private static int barnaclePieces = 7;
-    private static int newPieces = 9;
-
     //Used to hold data across scenes
     public static ReliefStats instance = null;
 
     //global statistics for game progress
-    public int SNOWY_MAX_COLLECT;
-    public int BARNACLE_MAX_COLLECT;
-    public int NEW_MAX_COLLECT;
-    public int currentSnowyProgress;
-    public int currentBarnacleProgress;
-    public int currentNewProgress;
-
-
-    //global strings for UI text displays
-
-    //user specific credentials
-    public string username = null; //nil for local-dev mode
+    private int SNOWY_MAX_COLLECT = 5;
+    private int BARNACLE_MAX_COLLECT = 0;
+    private int NEW_MAX_COLLECT = 9;
+    private int currentSnowyProgress;
+    private int currentBarnacleProgress;
+    private int currentNewProgress;
 
     void Awake()
     {
@@ -43,9 +32,6 @@ public class ReliefStats : MonoBehaviour {
         else if (instance != this)
             Destroy(gameObject);
         UnityEngine.XR.XRSettings.enabled = true;
-        SNOWY_MAX_COLLECT = snowyPieces;
-        BARNACLE_MAX_COLLECT = barnaclePieces;
-        NEW_MAX_COLLECT = newPieces;
         currentSnowyProgress = 0;
         currentBarnacleProgress = 0;
         currentNewProgress = 0;
@@ -69,6 +55,18 @@ public class ReliefStats : MonoBehaviour {
         return currentSnowyProgress >= SNOWY_MAX_COLLECT;
     }
 
+    public int MaxSnowyPieces()
+    {
+        return SNOWY_MAX_COLLECT;
+    }
+
+    public int SnowyPiecesLeft()
+    {
+        return SNOWY_MAX_COLLECT - currentSnowyProgress;
+    }
+
+
+
     public void IncrementBarnaclePiece()
     {
         currentBarnacleProgress++;
@@ -84,6 +82,18 @@ public class ReliefStats : MonoBehaviour {
         return currentBarnacleProgress >= BARNACLE_MAX_COLLECT;
     }
 
+    public int BarnaclePiecesLeft()
+    {
+        return BARNACLE_MAX_COLLECT - currentBarnacleProgress;
+    }
+
+    public int MaxBarnaclePieces()
+    {
+        return BARNACLE_MAX_COLLECT;
+    }
+
+
+
     public void IncrementNewPiece()
     {
         currentNewProgress++;
@@ -97,5 +107,15 @@ public class ReliefStats : MonoBehaviour {
     public bool HasAccessToNew()
     {
         return currentNewProgress >= NEW_MAX_COLLECT;
+    }
+    
+    public int NewPiecesLeft()
+    {
+        return NEW_MAX_COLLECT - currentNewProgress;
+    }
+
+    public int MaxNewPieces()
+    {
+        return NEW_MAX_COLLECT;
     }
 }

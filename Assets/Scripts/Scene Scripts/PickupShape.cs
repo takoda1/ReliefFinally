@@ -24,9 +24,9 @@ public class PickupShape : MonoBehaviour {
 
     void Start()
     {
-        SNOWY_PIECE_RETRIEVED = "Winter coat piece retrieved! {0} of " + ReliefStats.instance.SNOWY_MAX_COLLECT.ToString();
-        BARNACLE_PIECE_RETRIEVED = "Scuba gear piece retrieved! {0} of " + ReliefStats.instance.BARNACLE_MAX_COLLECT.ToString();
-        NEW_PIECE_RETRIEVED = "Mystical piece retrieved ! {0} of " + ReliefStats.instance.NEW_MAX_COLLECT.ToString();
+        SNOWY_PIECE_RETRIEVED = "Winter coat piece retrieved! {0} of " + ReliefStats.instance.MaxSnowyPieces().ToString();
+        BARNACLE_PIECE_RETRIEVED = "Scuba gear piece retrieved! {0} of " + ReliefStats.instance.MaxBarnaclePieces().ToString();
+        NEW_PIECE_RETRIEVED = "Mystical piece retrieved ! {0} of " + ReliefStats.instance.MaxNewPieces().ToString();
         SNOWY_ALL_PIECES_RETRIEVED = "Congratulations! You have collected all pieces of the winter coat. You can access Frigid Cliff.";
         BARNACLE_ALL_PIECES_RETRIEVED = "Congratulations! You have collected all pieces of the scuba gear. You can access Barnacle Waters.";
         NEW_ALL_PIECES_RETRIEVED = "Congratulations! You have collected all mystical pieces.";
@@ -94,6 +94,11 @@ public class PickupShape : MonoBehaviour {
         piece.SetActive(false);
     }
 
+
+
+
+    //Legacy code, could be used to allow pieces to be interacted with
+    //without a tag and instead using the name of the gameobject.
 
     /*void showPiecePickupProgress(string pieceType, GameObject piece) {
 		switch (pieceType) {

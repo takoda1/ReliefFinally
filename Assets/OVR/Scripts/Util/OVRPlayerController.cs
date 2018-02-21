@@ -259,13 +259,13 @@ public class OVRPlayerController : MonoBehaviour
                 if (touchPosition.x < 0)
                     moveLeft = true;
             }
-
+            //sprint
             if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger))
             {
                 MoveScale *= 2.0f;
             }
         }
-        
+        //Sprint for the stratusXL
         if(Input.GetButton("Button 4")) //button 4 maps to the left bumper on the controller
         {
             MoveScale *= 2.0f;

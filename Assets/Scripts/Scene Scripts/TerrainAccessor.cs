@@ -55,18 +55,18 @@ public class TerrainAccessor : MonoBehaviour {
                     accessUpdate.text = ACCESS_SNOWY;
                     SceneManager.LoadScene ("SnowyMountainScene", LoadSceneMode.Single);
 			    } else {
-				    int delta = ReliefStats.instance.SNOWY_MAX_COLLECT - ReliefStats.instance.currentSnowyProgress;
+                    int delta = ReliefStats.instance.SnowyPiecesLeft();
 				    accessUpdate.text = System.String.Format (NO_ACCESS_SNOWY, delta);
                     StartCoroutine(eraseCurrentStatus());
 			    }
 			    break;
-		    case "underwaterTerrainAccessor":
+		    case "barnacleTerrainAccessor":
 			    if (ReliefStats.instance.HasAccessToBarnacle()) {
                     accessUpdate.text = ACCESS_BARNACLE;
-                    SceneManager.LoadScene ("UnderwaterScene", LoadSceneMode.Single);
+                    SceneManager.LoadScene ("BarnacleWatersScene", LoadSceneMode.Single);
 			    }
                 else {
-				    int delta = ReliefStats.instance.BARNACLE_MAX_COLLECT - ReliefStats.instance.currentBarnacleProgress;
+                    int delta = ReliefStats.instance.BarnaclePiecesLeft();
 				    accessUpdate.text = System.String.Format (NO_ACCESS_BARNACLE, delta);
                     StartCoroutine(eraseCurrentStatus());
                     }
