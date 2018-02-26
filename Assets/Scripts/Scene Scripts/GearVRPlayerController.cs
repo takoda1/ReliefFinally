@@ -13,7 +13,6 @@ public class GearVRPlayerController : OVRPlayerController {
     override public void Start () {
         base.Start();
         useProfileData = false;
-
 	}
 	
 	// Update is called once per frame
@@ -36,7 +35,7 @@ public class GearVRPlayerController : OVRPlayerController {
         }
         UpdateFootstepAudio();
     }
-    
+
 
     private void UpdateFootstepAudio()
     {

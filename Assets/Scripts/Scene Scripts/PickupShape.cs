@@ -33,7 +33,7 @@ public class PickupShape : MonoBehaviour {
 
     }
 
-	void OnControllerColliderHit(ControllerColliderHit hit) {
+	void OnTriggerEnter(Collider hit) {
 		UpdatePieceProgress (hit.gameObject.tag, hit.gameObject);
 	}
 

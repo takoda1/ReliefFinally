@@ -21,6 +21,11 @@ public class Wander : MonoBehaviour {
     virtual public void Start()
     {
         rigidBody = GetComponent<Rigidbody>();
+        //for a random initial speed and rotation
+        Vector3 temp = new Vector3(Random.value * 2 + Random.value * -2, 0f, Random.value * 2 + Random.value * -2);
+        rigidBody.velocity = temp;
+        this.transform.rotation = Quaternion.LookRotation(temp);
+
         wanderAngle = .1f;
         CircleRadius /= 100;
     }

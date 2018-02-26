@@ -23,8 +23,7 @@ public class FishBehavior : Wander {
 		if(playerFishDistance.magnitude < FleeDistance)
         {
             playerVelocity = playerVelocity.normalized * 50; //big burst of velocity for fish to flee
-
-            Debug.unityLogger.Log("B", playerVelocity.x + " " + playerVelocity.z);
+            
             rigidBody.velocity = new Vector3(playerVelocity.z, 0, -1 * playerVelocity.x);
             /*
              * only player movements can bring player within flee range, and as such the fish will always flee

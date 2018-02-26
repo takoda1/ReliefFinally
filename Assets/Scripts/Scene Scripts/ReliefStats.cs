@@ -19,7 +19,7 @@ public class ReliefStats : MonoBehaviour {
 
     //global statistics for game progress
     private int SNOWY_MAX_COLLECT = 5;
-    private int BARNACLE_MAX_COLLECT = 0;
+    private int BARNACLE_MAX_COLLECT = 7;
     private int NEW_MAX_COLLECT = 9;
     private int currentSnowyProgress;
     private int currentBarnacleProgress;

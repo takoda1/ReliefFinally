@@ -1,6 +1,10 @@
 Android
 SceneListBegin?
-Assets/BarnacleWatersScene.unity
+Assets/MainMenuScene.unity
+Assets/InfoScene.unity
+Assets/SnowyMountainSceneControlled.unity
+Assets/GrassyPlainsSceneControlled.unity
+Assets/BarnacleWatersSceneControlled.unity
 SceneListEnd?
 7ba1e84ad3d2d8813486668e75f842ce Assembly-CSharp-firstpass.dll:UnityStandardAssets.Effects.ExtinguishableParticleSystem
 7df47d262399a6f845c2ed06b92cba9b Assembly-CSharp.dll:.OVRCameraRig
@@ -249,3 +253,5 @@ bcfc20d487bd118a9c10b5e5edd279cb Assembly-CSharp.dll:DigitalRuby.RainMaker.DemoS
 3b683737a9fec1ed707b75e2040ae228 Assembly-CSharp.dll:.PickupShape
 661d33336607a0bd9dd3964acc8c1c07 Assembly-CSharp.dll:.MenuItemInteractiveItem
 0f3d4bb7128a287827d041c696039525 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.AutoMobileShaderSwitch
+9f29bcecbd519f53c80013bbe9c16bc8 Assembly-CSharp.dll:.RotateGameObject
+20871f17d33b2ab90a7e5d03b2bfce55 Assembly-CSharp.dll:.AudioInstructionsInteractiveItem
