@@ -146,7 +146,7 @@ public class OVRPlayerController : MonoBehaviour
 	virtual public void Update()
 	{
         //Use keys to ratchet rotation
-#if UNITY_EDITOR || UNITY_STANDALONE_WIN
+#if (UNITY_EDITOR || UNITY_STANDALONE_WIN)
         if (Input.GetKeyDown(KeyCode.Q))
 			buttonRotation -= RotationRatchet;
 
@@ -250,13 +250,13 @@ public class OVRPlayerController : MonoBehaviour
             if (OVRInput.Get(OVRInput.Touch.PrimaryTouchpad) && !OVRInput.Get(OVRInput.Button.PrimaryTouchpad))
             {
                 Vector2 touchPosition = OVRInput.Get(OVRInput.Axis2D.PrimaryTouchpad);
-                if (touchPosition.y > 0)
+                if (touchPosition.y > .4)
                     moveForward = true;
-                if (touchPosition.y < 0)
+                if (touchPosition.y < -.4)
                     moveBack = true;
-                if (touchPosition.x > 0)
+                if (touchPosition.x > .4)
                     moveRight = true;
-                if (touchPosition.x < 0)
+                if (touchPosition.x < -.4)
                     moveLeft = true;
             }
             //sprint
@@ -369,7 +369,7 @@ public class OVRPlayerController : MonoBehaviour
 		if(primaryAxis.x > 0.0f)
             MoveThrottle += ort * (primaryAxis.x * transform.lossyScale.x * moveInfluence * BackAndSideDampen * Vector3.right);
 
-		Vector2 secondaryAxis = OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick);
+        Vector2 secondaryAxis = OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick);
 
 		euler.y += secondaryAxis.x * rotateInfluence;
 

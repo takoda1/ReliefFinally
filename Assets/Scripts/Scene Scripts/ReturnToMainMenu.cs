@@ -15,22 +15,17 @@ using UnityEngine.SceneManagement;
 
 public class ReturnToMainMenu : MonoBehaviour {
     private GameObject progression; //Holds the gameobject that contains the ReliefStats progression tracking script
-    private bool usingGearVrRemote;
 
     private void Start()
     {
         //Progression tracking script must be attached to gameobject named _ProgressionManager
         //for the progression object to be deleted correctly.
         progression = GameObject.Find("_ProgressionManager");
-        if (OVRInput.GetActiveController() == OVRInput.Controller.LTrackedRemote ||
-           OVRInput.GetActiveController() == OVRInput.Controller.RTrackedRemote)
-            usingGearVrRemote = true;
-        else
-            usingGearVrRemote = false;
     }
     // Update is called once per frame
     void Update () {
-        if (usingGearVrRemote)
+        if (OVRInput.GetActiveController() == OVRInput.Controller.LTrackedRemote ||
+           OVRInput.GetActiveController() == OVRInput.Controller.RTrackedRemote)
         {
             OVRInput.Update();
             Vector3 touchPosition = OVRInput.Get(OVRInput.Axis2D.PrimaryTouchpad);

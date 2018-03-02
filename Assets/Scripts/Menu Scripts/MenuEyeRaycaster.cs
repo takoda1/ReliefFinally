@@ -78,7 +78,7 @@ public class MenuEyeRaycaster : MonoBehaviour {
            OVRInput.GetActiveController() == OVRInput.Controller.RTrackedRemote)
         {
             //If the trigger is pressed when hovering over an interactive object, call Click
-            if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger))
+            if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger))
             {
                 if (currentInteractible != null)
                     currentInteractible.Click();

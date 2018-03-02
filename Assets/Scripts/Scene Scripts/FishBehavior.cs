@@ -30,13 +30,16 @@ public class FishBehavior : Wander {
              * to the right by 90 degrees perpendicular to the players orientation due to the above Vector formula,
              * so the rotation will always just be the player's rotations plus 90 degrees
              */
-            float deg = Mathf.Rad2Deg * Mathf.Atan(rigidBody.velocity.x / rigidBody.velocity.z); //i feel like this should be z/x but i couldn't get z/x to work
-            if (rigidBody.velocity.z < 0)
+            if(rigidBody.velocity.x >= 0 && rigidBody.velocity.z >= 0)
             {
-                deg += 180;
+                float deg = Mathf.Rad2Deg * Mathf.Atan(rigidBody.velocity.x / rigidBody.velocity.z); //i feel like this should be z/x but i couldn't get z/x to work
+                if (rigidBody.velocity.z < 0)
+                {
+                    deg += 180;
+                }
+                this.transform.rotation = Quaternion.Euler(0, deg, 0);
+                //this.transform.rotation = Quaternion.Euler(0, player.transform.rotation.y + 90, 0); 
             }
-            this.transform.rotation = Quaternion.Euler(0, deg, 0);
-            //this.transform.rotation = Quaternion.Euler(0, player.transform.rotation.y + 90, 0); 
         }
         else
         {

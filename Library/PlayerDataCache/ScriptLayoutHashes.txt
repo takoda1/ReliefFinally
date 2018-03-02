@@ -1,7 +1,11 @@
 Android
 SceneListBegin?
 Assets/MainMenuScene.unity
+Assets/GrassyPlainsScene.unity
+Assets/SnowyMountainScene.unity
+Assets/TutorialScene.unity
 Assets/InfoScene.unity
+Assets/BarnacleWatersScene.unity
 Assets/SnowyMountainSceneControlled.unity
 Assets/GrassyPlainsSceneControlled.unity
 Assets/BarnacleWatersSceneControlled.unity
@@ -146,8 +150,10 @@ bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.Audi
 463516d5b5fe8e67a0a24c48f2095b04 UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInputModule
 c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingCollider
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
+dd5481137759597d614818793c90a7fe Assembly-CSharp.dll:.Swim
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.DragRigidbody
 f2c3c40f0611ad47db2b47d8587394c5 Assembly-CSharp.dll:.OVROverlay
+9f29bcecbd519f53c80013bbe9c16bc8 Assembly-CSharp.dll:.RotateGameObject
 78ebae5ed9b3edeb216da437b99754a4 Assembly-CSharp-firstpass.dll:UnityStandardAssets.CrossPlatformInput.Joystick
 a97206b1f732dc0aa9b23a14352f4399 Assembly-CSharp.dll:.OVRPlatformMenu
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.InteractiveItem
@@ -220,6 +226,7 @@ e0f7ffd5d5c2abe4b2e16569a21163da UnityEngine.GoogleAudioSpatializer.dll:UnityEng
 e0f7ffd5d5c2abe4b2e16569a21163da UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioRoom
 d2af69ce28cda6fcf0b7728ae3f251b4 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.DynamicShadowSettings
 602017ac837ce39de79e6b98478ee720 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.SimpleActivatorMenu
+20871f17d33b2ab90a7e5d03b2bfce55 Assembly-CSharp.dll:.AudioInstructionsInteractiveItem
 bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.AudioSpatializerMicrosoft
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInput
 463516d5b5fe8e67a0a24c48f2095b04 UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInputModule
@@ -253,5 +260,3 @@ bcfc20d487bd118a9c10b5e5edd279cb Assembly-CSharp.dll:DigitalRuby.RainMaker.DemoS
 3b683737a9fec1ed707b75e2040ae228 Assembly-CSharp.dll:.PickupShape
 661d33336607a0bd9dd3964acc8c1c07 Assembly-CSharp.dll:.MenuItemInteractiveItem
 0f3d4bb7128a287827d041c696039525 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.AutoMobileShaderSwitch
-9f29bcecbd519f53c80013bbe9c16bc8 Assembly-CSharp.dll:.RotateGameObject
-20871f17d33b2ab90a7e5d03b2bfce55 Assembly-CSharp.dll:.AudioInstructionsInteractiveItem
