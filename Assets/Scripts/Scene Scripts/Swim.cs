@@ -13,8 +13,10 @@ using UnityEngine;
 
 public class Swim : MonoBehaviour {
 
+    //speed at which to move up and down
     public float speed;
 
+    //character controller that is to be given movement directions
     private CharacterController parent;
 
 	// Use this for initialization
@@ -26,10 +28,13 @@ public class Swim : MonoBehaviour {
 	void Update () {
 #if UNITY_ANDROID && !UNITY_EDITOR
         OVRInput.Update();
+
+        //if using the GearVR Controller
 		if (OVRInput.GetActiveController() == OVRInput.Controller.LTrackedRemote ||
             OVRInput.GetActiveController() == OVRInput.Controller.RTrackedRemote)
         {
             Vector2 touchPosition = OVRInput.Get(OVRInput.Axis2D.PrimaryTouchpad);
+            //if the player is pressing up or down on the touchpad, they will move up or down.
             if (OVRInput.Get(OVRInput.Button.PrimaryTouchpad))
             {
                 if(touchPosition.y >= .75)
@@ -45,11 +50,11 @@ public class Swim : MonoBehaviour {
         //StratusXL
         else
         {
-            if(Input.GetButton("Button 0"))
+            if(Input.GetButton("Button 0")) //maps to A
             {
                 moveUp();
             }
-            if(Input.GetButton("Button 1"))
+            if(Input.GetButton("Button 1")) //maps to B
             {
                 moveDown();
             }

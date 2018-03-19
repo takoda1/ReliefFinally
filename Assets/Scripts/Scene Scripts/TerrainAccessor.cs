@@ -53,7 +53,7 @@ public class TerrainAccessor : MonoBehaviour {
                 //still need to collect.
 			    if (ReliefStats.instance.HasAccessToSnowy()) {
                     accessUpdate.text = ACCESS_SNOWY;
-                    SceneManager.LoadScene ("SnowyMountainScene", LoadSceneMode.Single);
+                    SceneManager.LoadScene("SnowyMountainScene", LoadSceneMode.Single);
 			    } else {
                     int delta = ReliefStats.instance.SnowyPiecesLeft();
 				    accessUpdate.text = System.String.Format (NO_ACCESS_SNOWY, delta);
@@ -63,7 +63,7 @@ public class TerrainAccessor : MonoBehaviour {
 		    case "barnacleTerrainAccessor":
 			    if (ReliefStats.instance.HasAccessToBarnacle()) {
                     accessUpdate.text = ACCESS_BARNACLE;
-                    SceneManager.LoadScene ("BarnacleWatersScene", LoadSceneMode.Single);
+                    SceneManager.LoadScene("BarnacleWatersScene", LoadSceneMode.Single);
 			    }
                 else {
                     int delta = ReliefStats.instance.BarnaclePiecesLeft();
@@ -73,7 +73,7 @@ public class TerrainAccessor : MonoBehaviour {
 			    break;
 		
 		    case "grassyTerrainAccessor":
-                    SceneManager.LoadScene("GrassyPlainsScene", LoadSceneMode.Single);
+                SceneManager.LoadScene("GrassyPlainsScene", LoadSceneMode.Single);
 			    break;
 		    }
 	}
